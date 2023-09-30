@@ -7,9 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import lombok.extern.java.Log;
-
+import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,6 +21,8 @@ public class VentanaPrincipalController {
     public Button btnRegistrarVehiculo;
     @FXML
     public Button btnHacerAlquiler;
+    @FXML
+    public Button btnCerrarVentana;
 
 
     public void onRegistrarClienteClick(ActionEvent actionEvent) throws IOException {
@@ -32,7 +34,13 @@ public class VentanaPrincipalController {
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.setResizable(false);
         stage.show();
+
+        Stage stage1 = (Stage) this.btnRegistrarCliente.getScene().getWindow();
+        stage1.close();
 
     }
 
@@ -45,8 +53,13 @@ public class VentanaPrincipalController {
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.setResizable(false);
         stage.show();
 
+        Stage stage1 = (Stage) this.btnRegistrarVehiculo.getScene().getWindow();
+        stage1.close();
     }
 
     public void onHacerAlquilerClick(ActionEvent actionEvent) throws IOException {
@@ -58,8 +71,18 @@ public class VentanaPrincipalController {
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.setResizable(false);
         stage.show();
 
+        Stage stage1 = (Stage) this.btnHacerAlquiler.getScene().getWindow();
+        stage1.close();
+    }
 
+    @FXML
+    private void onCerrarVentanaClick(ActionEvent event) {
+        Stage stage = (Stage) this.btnCerrarVentana.getScene().getWindow();
+        stage.close();
     }
 }

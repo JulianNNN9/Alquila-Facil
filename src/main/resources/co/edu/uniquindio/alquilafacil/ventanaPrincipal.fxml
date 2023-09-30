@@ -4,13 +4,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 90, 205));" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.alquilafacil.controllers.VentanaPrincipalController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 5; -fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 90, 205));" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.alquilafacil.controllers.VentanaPrincipalController">
     <Label layoutX="187.0" layoutY="63.0" text="Alquila facil">
         <font>
             <Font name="Candara Bold" size="45.0" />
         </font>
     </Label>
-   <Button fx:id="btnRegistrarCliente" onAction="#onRegistrarClienteClick" layoutX="231.0" layoutY="170.0" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(100, 239, 232); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar un cliente" />
-   <Button fx:id="btnRegistrarVehiculo" onAction="#onRegistrarVehiculoClick" layoutX="225.0" layoutY="230.0" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(100, 239, 232); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar un vehiculo" />
-   <Button fx:id="btnHacerAlquiler" onAction="#onHacerAlquilerClick" layoutX="238.0" layoutY="290.0" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(100, 239, 232); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Hacer un alquiler" />
+    <Button fx:id="btnCerrarVentana" layoutX="560.0" mnemonicParsing="false" onAction="#onCerrarVentanaClick" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-font-size: 20px; -fx-alignment: top-left; -fx-font-style: oblique;" text="X" />
+    <Button fx:id="btnRegistrarCliente" layoutX="231.0" layoutY="170.0" mnemonicParsing="false" onAction="#onRegistrarClienteClick" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar un cliente" />
+   <Button fx:id="btnRegistrarVehiculo" layoutX="225.0" layoutY="230.0" mnemonicParsing="false" onAction="#onRegistrarVehiculoClick" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar un vehiculo" />
+   <Button fx:id="btnHacerAlquiler" layoutX="238.0" layoutY="290.0" mnemonicParsing="false" onAction="#onHacerAlquilerClick" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Hacer un alquiler" />
 </AnchorPane>

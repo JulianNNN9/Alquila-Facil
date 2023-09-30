@@ -18,7 +18,21 @@ import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.IOException;
 
+import static java.util.concurrent.TimeUnit.DAYS;
+
 public class RegistroAlquilerController {
+
+    /*
+
+    ---------------FUNCIONES POR IMPLEMENTAR-----------------
+
+    - Debe validar que el vehículo elegido esté disponible en la fecha que se requiere.
+
+    - Escriba un método que retorne el total ganado por alquileres de vehículos durante un rango de fechas.
+
+    - Escriba un método que retorne la marca de vehículo que más se alquila.
+
+     */
 
     private final AlquilaFacil alquilaFacil = AlquilaFacil.getInstance();
 
@@ -54,6 +68,8 @@ public class RegistroAlquilerController {
     public TableColumn<Vehiculo, Vehiculo> colNumeroAsientos;
     @FXML
     public TableView<Vehiculo> tablaVehiculos;
+    @FXML
+    public Button btnCalcularValorTotal;
 
     public void initialize(){
         ObservableList<Vehiculo> observableList = tablaVehiculos.getItems();
@@ -87,6 +103,7 @@ public class RegistroAlquilerController {
     }
 
     public void onRegistrarAlquilerClick(ActionEvent actionEvent) throws ErrorEnIngresoFechasException, AtributoVacioException, IOException {
+
         alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString(), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), txtFldFechaRegistro.getValue().atStartOfDay(), Double.parseDouble(txtFldValorTotal.getText()));
 
         File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
@@ -99,9 +116,39 @@ public class RegistroAlquilerController {
         scene.setFill(Color.TRANSPARENT);
         stage.show();
 
-        alquilaFacil.crearAlertaInfo("Registro de alquiler", "Se ha registrado un alquiler al cliente con la cédula '" + txtFldCedulaCliente.getText() + "' del vehiculo con placa '" + colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString() + "'");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("FACTURA");
+        alert.setHeaderText("Se ha hecho el alquiler con éxito");
+        alert.setContentText("Cédula cliente: " + txtFldCedulaCliente.getText() + "\n" +
+                "Placa del vehiculo: " + colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1) +"\n" +
+                "Fecha alquiler: " + txtFldFechaAlquier.getValue() + "\n" +
+                "Fecha regreso: " + txtFldFechaRegreso.getValue() + "\n" +
+                "Fecha de registro: " + txtFldFechaRegistro.getValue() + "\n" +
+                "\n" +
+                "VALOR TOTAL: " + txtFldValorTotal.getText());
+        alert.show();
 
         Stage stage1 = (Stage) this.btnRegistrarAlquier.getScene().getWindow();
         stage1.close();
+    }
+
+    public void onCalcularValotTotal(ActionEvent actionEvent) throws AtributoVacioException {
+
+        if (txtFldFechaAlquier.toString().isBlank() || txtFldFechaRegreso.toString().isBlank()){
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error al calcular");
+            alert.setHeaderText("No se han relleno las casillas necesarias");
+            alert.setContentText("Las casillas de fecha alquiler y fecha regreso son ablogatorias para poder calcular el valor total.");
+            alert.show();
+
+            alquilaFacil.crearAlertaInfo("Error en el ingreso de datos", "Los campos de fecha alquiler y fecha regreso son obligatorios para calcular el valor total.");
+
+            throw new AtributoVacioException("Los campos de fecha alquiler y fecha regreso son obligatorios para poder calcular el valor total.");
+
+        } else {
+            long diasDeDiferencia = DAYS.toChronoUnit().between(txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue());
+            txtFldValorTotal.setText(String.valueOf(Double.parseDouble(colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1)) * diasDeDiferencia));
+        }
     }
 }

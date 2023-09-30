@@ -15,11 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
+import java.util.stream.Collectors;
 
 @Getter
 @Log
 
 public class AlquilaFacil {
+
+    /*
+
+    ---------------FUNCIONES POR IMPLEMENTAR-----------------
+
+    - Haga uso de archivos de propiedades para cargar todos los textos de las ventanas (tanto en español como en inglés).
+
+     */
 
     List<Cliente> clientes;
     List<Vehiculo> vehiculos;
@@ -38,7 +47,25 @@ public class AlquilaFacil {
         }
 
         this.vehiculos = new ArrayList<>();
+        vehiculos.add(Vehiculo.builder()
+                .placa("HGY-45D")
+                .referencia("159842")
+                .marca("Renault")
+                .modelo("2020")
+                .kilometraje("1210")
+                .precioAlquilerPorDia(100.0)
+                .automatico("SI")
+                .numeroAsientos("4")
+                .build());
         this.clientes = new ArrayList<>();
+        clientes.add(Cliente.builder()
+                .cedula("1234")
+                .nombreCompleto("Ricardo Marin")
+                .nroTelefono("123")
+                .email("ricard@empresa.com")
+                .ciudad("Armenia")
+                .direccionResidencia("Salento")
+                .build());
         this.alquileres = new ArrayList<>();
     }
 
@@ -157,13 +184,18 @@ public class AlquilaFacil {
 
             alquileres.add(alquiler);
 
-            log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo + " a el cliente con la cedula " + cedulaCliente);
+            log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo.substring(23, placaVehiculo.length() - 1) + " a el cliente con la cedula " + cedulaCliente);
 
         } else {
             crearAlertaError("Error en ingreso de datos", "La cédula del cliente ingresado no se encuentra registrada ó es invalida");
             log.warning("El cliente que ha ingresado no existe en la base de datos.");
         }
 
+    }
+
+    public List<Vehiculo> encontrarVehiculosEnAlquiler(){
+        List<String> placaList = alquileres.stream().map(Alquiler::getPlacaVehiculo).toList();
+        return vehiculos.stream().filter(vehiculo -> placaList.contains(vehiculo.getPlaca())).collect(Collectors.toList());
     }
 
     public void crearAlertaError(String tituloError, String contextoError){

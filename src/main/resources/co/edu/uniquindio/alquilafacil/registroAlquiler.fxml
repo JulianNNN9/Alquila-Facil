@@ -18,27 +18,27 @@
                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
              </rowConstraints>
-             <Label prefHeight="17.0" prefWidth="92.0" text="Cédula cliente*" />
-             <Label layoutX="10.0" layoutY="17.0" prefHeight="17.0" prefWidth="88.0" text="Fecha alquiler*" GridPane.rowIndex="1" />
-             <Label layoutX="10.0" layoutY="47.0" prefHeight="17.0" prefWidth="91.0" text="Fecha regreso*" GridPane.rowIndex="2" />
-             <Label text="Fecha registro*" GridPane.rowIndex="3" />
-             <Label text="Valor total*" GridPane.rowIndex="4" />
+             <Label prefHeight="17.0" prefWidth="92.0" text="Cédula cliente*"> <font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+             <Label layoutX="10.0" layoutY="17.0" prefHeight="17.0" prefWidth="88.0" text="Fecha alquiler*" GridPane.rowIndex="1"> <font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+             <Label layoutX="10.0" layoutY="47.0" prefHeight="17.0" prefWidth="91.0" text="Fecha regreso*" GridPane.rowIndex="2"> <font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+             <Label text="Fecha registro*" GridPane.rowIndex="3"> <font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+             <Label text="Valor total*" GridPane.rowIndex="4"> <font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
              <TextField fx:id="txtFldCedulaCliente" GridPane.columnIndex="1" />
              <DatePicker fx:id="txtFldFechaAlquier" GridPane.columnIndex="1" GridPane.rowIndex="1" />
              <DatePicker fx:id="txtFldFechaRegreso" GridPane.columnIndex="1" GridPane.rowIndex="2" />
              <DatePicker fx:id="txtFldFechaRegistro" GridPane.columnIndex="1" GridPane.rowIndex="3" />
              <TextField fx:id="txtFldValorTotal" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </GridPane>
-         <TableView fx:id="tablaVehiculos" layoutX="52.0" layoutY="250.0" prefHeight="333.0" prefWidth="765.0" style="-fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 70, 205));">
+         <TableView fx:id="tablaVehiculos" layoutX="52.0" layoutY="293.0" prefHeight="290.0" prefWidth="765.0" style="-fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 70, 205));">
             <columns>
-                <TableColumn fx:id="colPlaca" prefWidth="82.0" text="Placa" />
-                <TableColumn fx:id="colReferencia" prefWidth="94.0" text="Referencia" />
-                <TableColumn fx:id="colMarca" prefWidth="81.0" text="Marca" />
-                <TableColumn fx:id="colModelo" prefWidth="90.0" text="Modelo" />
-                <TableColumn fx:id="colKilometraje" prefWidth="96.0" text="Kilometraje" />
-                <TableColumn fx:id="colAlquilerXDia" prefWidth="142.0" text="Precio alquiler por dia" />
-                <TableColumn fx:id="colAutomatico" prefWidth="76.0" text="Automático" />
-                <TableColumn fx:id="colNumeroAsientos" prefWidth="103.0" text="Numero asientos" />
+                <TableColumn fx:id="colPlaca" prefWidth="78.0" text="Placa" />
+                <TableColumn fx:id="colReferencia" prefWidth="82.0" text="Referencia" />
+                <TableColumn fx:id="colMarca" prefWidth="76.0" text="Marca" />
+                <TableColumn fx:id="colModelo" prefWidth="69.0" text="Modelo" />
+                <TableColumn fx:id="colKilometraje" prefWidth="108.0" text="Kilometraje" />
+                <TableColumn fx:id="colAlquilerXDia" prefWidth="160.0" text="Precio alquiler por dia" />
+                <TableColumn fx:id="colAutomatico" prefWidth="84.0" text="Automático" />
+                <TableColumn fx:id="colNumeroAsientos" prefWidth="102.0" text="Numero asientos" />
             </columns>
          </TableView>
          <Label layoutX="365.0" layoutY="11.0" prefHeight="25.0" prefWidth="140.0" text="Registrar alquileres">
@@ -46,7 +46,13 @@
                  <Font name="Candara Bold" size="16.0" />
              </font>
          </Label>
+         <Label layoutX="52.0" layoutY="261.0" prefHeight="25.0" prefWidth="242.0" text="Seleccione el vehiculo a alquilar:">
+             <font>
+                 <Font name="Candara Bold" size="14.0" />
+             </font>
+         </Label>
          <Button fx:id="btnCerrarVentana" layoutX="810.0" mnemonicParsing="false" onAction="#onCerrarVentanaClick" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-font-size: 20px; -fx-alignment: top-left; -fx-font-style: oblique;" text="X" />
          <Button fx:id="btnRegistrarAlquier" layoutX="370.0" layoutY="604.0" mnemonicParsing="false" onAction="#onRegistrarAlquilerClick" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar alquiler" />
+      <Button fx:id="btnCalcularValorTotal" layoutX="374.0" layoutY="195.0" mnemonicParsing="false" onAction="#onCalcularValotTotal" prefHeight="25.0" prefWidth="61.0" text="Calcular" />
      </AnchorPane>
 </AnchorPane>

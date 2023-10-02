@@ -39,6 +39,7 @@ public class RegistroClienteController {
     public TextField txtFldDireccionResidencia;
 
     public void onRegistrarClienteClick(ActionEvent actionEvent) throws AtributoVacioException, InformacionRepetidaException, IOException {
+
         alquilaFacil.registrarCliente(txtFldCedula.getText(), txtFldNombreCompleto.getText(), txtFldNumeroTelefono.getText(), txtFldMail.getText(), txtFldCiudad.getText(), txtFldDireccionResidencia.getText());
 
         File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");

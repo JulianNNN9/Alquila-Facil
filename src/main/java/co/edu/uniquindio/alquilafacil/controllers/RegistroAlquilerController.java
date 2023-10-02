@@ -85,23 +85,6 @@ public class RegistroAlquilerController {
         this.colNumeroAsientos.setCellValueFactory(new PropertyValueFactory<>("numeroAsientos"));
     }
 
-    @FXML
-    private void onCerrarVentanaClick(ActionEvent event) throws IOException {
-
-        File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
-        FXMLLoader loader = new FXMLLoader(url.toURL());
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene.setFill(Color.TRANSPARENT);
-        stage.show();
-
-        Stage stage1 = (Stage) this.btnCerrarVentana.getScene().getWindow();
-        stage1.close();
-    }
-
     public void onRegistrarAlquilerClick(ActionEvent actionEvent) throws ErrorEnIngresoFechasException, AtributoVacioException, IOException {
 
         alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString(), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), txtFldFechaRegistro.getValue().atStartOfDay(), Double.parseDouble(txtFldValorTotal.getText()));
@@ -136,12 +119,6 @@ public class RegistroAlquilerController {
 
         if (txtFldFechaAlquier.toString().isBlank() || txtFldFechaRegreso.toString().isBlank()){
 
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Error al calcular");
-            alert.setHeaderText("No se han relleno las casillas necesarias");
-            alert.setContentText("Las casillas de fecha alquiler y fecha regreso son ablogatorias para poder calcular el valor total.");
-            alert.show();
-
             alquilaFacil.crearAlertaInfo("Error en el ingreso de datos", "Los campos de fecha alquiler y fecha regreso son obligatorios para calcular el valor total.");
 
             throw new AtributoVacioException("Los campos de fecha alquiler y fecha regreso son obligatorios para poder calcular el valor total.");
@@ -151,4 +128,23 @@ public class RegistroAlquilerController {
             txtFldValorTotal.setText(String.valueOf(Double.parseDouble(colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1)) * diasDeDiferencia));
         }
     }
+
+
+    @FXML
+    private void onCerrarVentanaClick(ActionEvent event) throws IOException {
+
+        File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
+        FXMLLoader loader = new FXMLLoader(url.toURL());
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.show();
+
+        Stage stage1 = (Stage) this.btnCerrarVentana.getScene().getWindow();
+        stage1.close();
+    }
+
 }

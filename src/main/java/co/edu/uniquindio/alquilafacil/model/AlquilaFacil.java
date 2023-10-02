@@ -187,8 +187,9 @@ public class AlquilaFacil {
             log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo.substring(23, placaVehiculo.length() - 1) + " a el cliente con la cedula " + cedulaCliente);
 
         } else {
-            crearAlertaError("Error en ingreso de datos", "La cédula del cliente ingresado no se encuentra registrada ó es invalida");
-            log.warning("El cliente que ha ingresado no existe en la base de datos.");
+            crearAlertaError("Cedula no existente*", "La cédula ingresada no está registrada.");
+            log.info("Se ha hecho un intento de registro de alquiler con cédula inválida.");
+            throw new AtributoVacioException("La cédula no está registrada.");
         }
 
     }

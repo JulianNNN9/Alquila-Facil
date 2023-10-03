@@ -11,9 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +47,21 @@ public class RegistroVehiculoController {
     @FXML
     public Button btnCerrarVentana;
 
+    public void initialize(){
+
+        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, change -> {
+            String nuevoTexto = change.getControlNewText();
+            if (nuevoTexto.matches("[0-9]*")) {
+                return change;
+            }
+            alquilaFacil.crearAlertaInfo("Error en el ingreso de datos", "Solo se pueden ingresar valores numericos.");
+            return null;
+        });
+
+        txtFldPrecioAlquierPorDia.setTextFormatter(textFormatter);
+
+    }
+
     public void onRegistrarVehiculoClick(ActionEvent actionEvent) throws NumeroNegativoException, InformacionRepetidaException, AtributoVacioException, IOException {
 
         alquilaFacil.registrarVehiculo(txtFldPlaca.getText(), txtFldReferencia.getText(), txtFldMarca.getText(), txtFldModelo.getText(), txtFldKilometraje.getText(), Double.valueOf(txtFldPrecioAlquierPorDia.getText()), txtFldAutomatico.getText(), txtFldNumeroAsientos.getText(), txtFldImagePath.getText());
@@ -59,7 +76,7 @@ public class RegistroVehiculoController {
         scene.setFill(Color.TRANSPARENT);
         stage.show();
 
-        alquilaFacil.crearAlertaInfo("Registro de vehiculo", "Se ha registrado un vehiculo con la placa '" + txtFldPlaca.getText() + "'");
+        alquilaFacil.crearAlertaInfo("Registro de vehiculo", "Se ha registrado un vehiculo con la placa " + "'" + txtFldPlaca.getText() + "'");
 
         Stage stage1 = (Stage) this.btnRegistrarVehiculo.getScene().getWindow();
         stage1.close();

@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,13 +85,13 @@ public class AlquilaFacil {
         if (cedula == null || cedula.isBlank() || nombreCompleto == null || nombreCompleto.isBlank() || nroTelefono == null || nroTelefono.isBlank()){
             crearAlertaError("Campo obligatorio*", "Se debe ingresar algunos datos obligatoriamente. (*)");
             log.info("Se ha hecho un intento de registro de cliente con campos vacios.");
-            throw new AtributoVacioException("El campo cédula es obligatorio.");
+            throw new AtributoVacioException("Hay atributos que son obligatorios. (*)");
         }
 
         if (clientes.stream().anyMatch(cliente -> cliente.getCedula().equals(cedula))){
-            crearAlertaError("Error en el ingreso de la cedula", "Este cliente ya se encuentra registrado en la base de datos.");
+            crearAlertaError("Error en el ingreso de datos", "Algunos datos ingresados ya se encuentran registrados en la base de datos.");
             log.info("Se ha hecho un intento de registro de cliente con datos repetidos.");
-            throw new InformacionRepetidaException("La cédula ya se encuentra registrada.");
+            throw new InformacionRepetidaException("Hay atributos que ya se encuentran registrados.");
         }
 
         Cliente cliente = Cliente.builder()
@@ -116,19 +115,19 @@ public class AlquilaFacil {
             , String numeroSillas, String imagePath) throws InformacionRepetidaException, NumeroNegativoException, AtributoVacioException {
 
         if (placa == null || placa.isBlank() || referencia == null || referencia.isBlank() || marca == null || marca.isBlank() || modelo == null || modelo.isBlank() || kilometraje == null || kilometraje.isBlank() || automatico == null || automatico.isBlank() || numeroSillas == null || numeroSillas.isBlank()){
-            crearAlertaError("Campo obligatorio*", "Se debe ingresar todos los datos obligatoriamente.");
+            crearAlertaError("Campo obligatorio*", "Se debe ingresar algunos datos obligatoriamente. (*)");
             log.info("Se ha hecho un intento de registro de vehiculo con campos vacios.");
-            throw new AtributoVacioException("Todos los campos son obligatorios.");
+            throw new AtributoVacioException("Hay atributos que son obligatorios. (*)");
         }
 
         if (vehiculos.stream().anyMatch(vehiculo -> vehiculo.getPlaca().equals(placa))){
-            crearAlertaError("Error en el ingreso de placa", "La placa ingresada ya se encuentra registrada.");
+            crearAlertaError("Error en el ingreso de datos", "Algunos datos ingresados ya se encuentran registrados en la base de datos.");
             log.info("Se ha hecho un intento de resgistro de vehiculo con datos repetidos");
-            throw new InformacionRepetidaException("El vehiculo ya se encuentra registrado.");
+            throw new InformacionRepetidaException("Hay atributos que ya se encuentran registrados.");
         }
 
         if (precioAlquilerPorDia < 0){
-            crearAlertaError("Error en el ingreso de precios", "El alquiler por día no puede ser menor que cero.");
+            crearAlertaError("Error en el ingreso de datos", "Los valores numericos no pueden ser negativos.");
             log.info("Se han ingresado valores invalidos.");
             throw new NumeroNegativoException("El valor no puede ser negativo.");
         }
@@ -151,18 +150,18 @@ public class AlquilaFacil {
 
     }
 
-    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDateTime fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException, AtributoVacioException {
+    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDate fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException, AtributoVacioException {
 
-        if (cedulaCliente == null || cedulaCliente.isBlank()|| fechaAlquier == null || fechaRegreso == null || fechaRegistro == null){
-            crearAlertaError("Campo obligatorio*", "Se debe ingresar todos los datos obligatoriamente.");
+        if (cedulaCliente == null || cedulaCliente.isBlank()|| fechaAlquier == null || fechaRegreso == null){
+            crearAlertaError("Campo obligatorio*", "Se debe ingresar algunos datos obligatoriamente. (*)");
             log.info("Se ha hecho un intento de registro de alquiler con campos vacios.");
-            throw new AtributoVacioException("Todos los campos son obligatorios.");
+            throw new AtributoVacioException("Hay atributos que son obligatorios. (*)");
         }
 
         if (placaVehiculo == null || placaVehiculo.isBlank()){
-            crearAlertaError("Campo obligatorio*", "Se debe seleccionar el vehiculo a alquilar.");
+            crearAlertaError("Campo obligatorio*", "Se debe ingresar algunos datos obligatoriamente. (*)");
             log.info("Se ha hecho un intento de registro de alquiler sin seleccionar un vehiculo.");
-            throw new AtributoVacioException("Se ha hecho un intento de registro de alquiler sin seleccionar un vehiculo.");
+            throw new AtributoVacioException("Hay atributos que son obligatorios. (*)");
         }
 
         if (fechaAlquier.isAfter(fechaRegreso)){
@@ -191,7 +190,7 @@ public class AlquilaFacil {
         } else {
             crearAlertaError("Cedula no existente*", "La cédula ingresada no está registrada.");
             log.info("Se ha hecho un intento de registro de alquiler con cédula inválida.");
-            throw new AtributoVacioException("La cédula no está registrada.");
+            throw new AtributoVacioException("Hay atributos que son obligatorios. (*)");
         }
 
     }
@@ -201,17 +200,17 @@ public class AlquilaFacil {
         return vehiculos.stream().filter(vehiculo -> placaList.contains(vehiculo.getPlaca())).collect(Collectors.toList());
     }
 
-    public void crearAlertaError(String tituloError, String contextoError){
+    public void crearAlertaError(String tituloError, String contenidoError){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(tituloError);
-        alert.setContentText(contextoError);
+        alert.setContentText(contenidoError);
         alert.show();
     }
 
-    public void crearAlertaInfo(String tituloError, String contextoError){
+    public void crearAlertaInfo(String tituloError, String contenidoError){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(tituloError);
-        alert.setContentText(contextoError);
+        alert.setContentText(contenidoError);
         alert.show();
     }
 }

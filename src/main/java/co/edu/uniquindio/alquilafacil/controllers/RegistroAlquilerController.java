@@ -24,6 +24,7 @@ import javafx.util.converter.IntegerStringConverter;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 
@@ -49,8 +50,6 @@ public class RegistroAlquilerController {
     public DatePicker txtFldFechaAlquier;
     @FXML
     public DatePicker txtFldFechaRegreso;
-    @FXML
-    public DatePicker txtFldFechaRegistro;
     @FXML
     public TextField txtFldValorTotal;
     @FXML
@@ -115,7 +114,7 @@ public class RegistroAlquilerController {
 
     public void onRegistrarAlquilerClick(ActionEvent actionEvent) throws ErrorEnIngresoFechasException, AtributoVacioException, IOException {
 
-        alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString(), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), txtFldFechaRegistro.getValue().atStartOfDay(), Double.parseDouble(txtFldValorTotal.getText()));
+        alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString(), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), LocalDate.now(), Double.parseDouble(txtFldValorTotal.getText()));
 
         File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
         FXMLLoader loader = new FXMLLoader(url.toURL());
@@ -134,7 +133,7 @@ public class RegistroAlquilerController {
                 "Placa del vehiculo: " + colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1) +"\n" +
                 "Fecha alquiler: " + txtFldFechaAlquier.getValue() + "\n" +
                 "Fecha regreso: " + txtFldFechaRegreso.getValue() + "\n" +
-                "Fecha de registro: " + txtFldFechaRegistro.getValue() + "\n" +
+                "Fecha de registro: " + LocalDate.now() + "\n" +
                 "\n" +
                 "VALOR TOTAL: " + txtFldValorTotal.getText());
         alert.show();
@@ -147,13 +146,15 @@ public class RegistroAlquilerController {
 
         if (txtFldFechaAlquier.toString().isBlank() || txtFldFechaRegreso.toString().isBlank()){
 
-            alquilaFacil.crearAlertaInfo("Error en el ingreso de datos", "Los campos de fecha alquiler y fecha regreso son obligatorios para calcular el valor total.");
+            alquilaFacil.crearAlertaError("Campo obligatorio*", "Se debe ingresar algunos datos obligatoriamente. (*)");
 
-            throw new AtributoVacioException("Los campos de fecha alquiler y fecha regreso son obligatorios para poder calcular el valor total.");
+            throw new AtributoVacioException("Hay atributos que son obligatorios. (*)");
 
         } else {
+
             long diasDeDiferencia = DAYS.toChronoUnit().between(txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue());
             txtFldValorTotal.setText(String.valueOf(Double.parseDouble(colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1)) * diasDeDiferencia));
+
         }
     }
 
@@ -172,14 +173,6 @@ public class RegistroAlquilerController {
 
         Stage stage1 = (Stage) this.btnCerrarVentana.getScene().getWindow();
         stage1.close();
-    }
-
-    private void txtEnNumeros(KeyEvent keyEvent){
-        String caracter = keyEvent.getCharacter();
-        if (Character.isLetter(Integer.parseInt(caracter))){
-            keyEvent.consume();
-            alquilaFacil.crearAlertaInfo("Error en ingreso de datos", "El valor total solo permite números.");
-        }
     }
 
 }

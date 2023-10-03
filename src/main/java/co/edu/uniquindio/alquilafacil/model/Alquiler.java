@@ -19,7 +19,7 @@ public class Alquiler {
     private String placaVehiculo;
     private LocalDate fechaAlquiler;
     private LocalDate fechaRegreso;
-    private LocalDateTime fechaRegistro;
+    private LocalDate fechaRegistro;
     private double valorTotal;
 
 }

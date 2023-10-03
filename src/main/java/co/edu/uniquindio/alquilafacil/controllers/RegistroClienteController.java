@@ -52,7 +52,7 @@ public class RegistroClienteController {
         scene.setFill(Color.TRANSPARENT);
         stage.show();
 
-        alquilaFacil.crearAlertaInfo("Registro de cliente", "Se ha registrado el cliente con la cédula '" + txtFldCedula.getText() + "'");
+        alquilaFacil.crearAlertaInfo("Registro de cliente", "Se ha registrado el cliente con la cédula " + "'" + txtFldCedula.getText() + "'");
 
         Stage stage1 = (Stage) this.btnRegistrarCliente.getScene().getWindow();
         stage1.close();

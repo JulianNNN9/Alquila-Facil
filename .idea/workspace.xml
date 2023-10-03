@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="759079e2-dde8-4960-8df8-61bb801c7145" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroClienteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroVehiculoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroVehiculoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Vehiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/imagenes/Imagen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Alquiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Alquiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,7 @@
       <workItem from="1696213584724" duration="2630000" />
       <workItem from="1696257881118" duration="184000" />
       <workItem from="1696273501909" duration="6584000" />
-      <workItem from="1696292435652" duration="815000" />
+      <workItem from="1696292435652" duration="4804000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />
@@ -150,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696216211630</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Se agrega el archivo properties y se agregan la vista previa del vehiculo a alquilar, limitar el ingreso a solo valores numericos.">
+      <option name="closed" value="true" />
+      <created>1696293460371</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696293460371</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +167,8 @@
     <MESSAGE value="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)" />
     <MESSAGE value="Cambios en las ventanas y nuevo boton que calcula el valor total automaticamente." />
     <MESSAGE value="Se han corregido repeticiones en el código y se ha corregido error en la ventana y controller de el alquiler." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se han corregido repeticiones en el código y se ha corregido error en la ventana y controller de el alquiler." />
+    <MESSAGE value="Se agrega el archivo properties y se agregan la vista previa del vehiculo a alquilar, limitar el ingreso a solo valores numericos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agrega el archivo properties y se agregan la vista previa del vehiculo a alquilar, limitar el ingreso a solo valores numericos." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

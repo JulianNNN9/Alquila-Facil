@@ -25,13 +25,7 @@ import java.time.LocalDate;
 
 public class RegistroAlquilerController {
 
-    /*
-
-    ---------------FUNCIONES POR IMPLEMENTAR-----------------
-
-    - Escriba un método que retorne la marca de vehículo que más se alquila.
-
-     */
+   
 
     private final AlquilaFacil alquilaFacil = AlquilaFacil.getInstance();
 

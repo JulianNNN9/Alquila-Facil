@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,6 +126,7 @@
       <workItem from="1696292435652" duration="15147000" />
       <workItem from="1696342797973" duration="4412000" />
       <workItem from="1696348623380" duration="3751000" />
+      <workItem from="1696352711929" duration="3807000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />

@@ -1642,3 +1642,43 @@ oct. 03, 2023 11:27:50 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil g
 INFO: Se crea una nueva instancia de AlquilaFacil
 oct. 03, 2023 11:48:01 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
 INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:51:16 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:51:18 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:51:30 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha registrado un alquier del vehiculo con la placa HGY-45D a el cliente con la cedula 1234
+oct. 03, 2023 11:51:30 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha registrado un alquier del vehiculo con la placa HGY-45D a el cliente con la cedula 1234
+oct. 03, 2023 11:51:30 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:51:32 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:51:42 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha intentado hacer un alquiler con una fecha inválida
+oct. 03, 2023 11:51:47 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha registrado un alquier del vehiculo con la placa HGY-45D a el cliente con la cedula 1234
+oct. 03, 2023 11:51:47 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha registrado un alquier del vehiculo con la placa HGY-45D a el cliente con la cedula 1234
+oct. 03, 2023 11:51:47 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:52:23 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:55:32 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:55:34 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:55:51 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Las fechas de alquiler son validas.
+oct. 03, 2023 11:55:51 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha registrado un alquier del vehiculo con la placa HGY-45D a el cliente con la cedula 1234
+oct. 03, 2023 11:55:51 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:55:54 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:56:05 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Las fechas de alquiler son validas.
+oct. 03, 2023 11:56:05 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha registrado un alquier del vehiculo con la placa HGY-45D a el cliente con la cedula 1234
+oct. 03, 2023 11:56:05 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil

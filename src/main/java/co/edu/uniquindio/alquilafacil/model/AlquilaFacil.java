@@ -1,23 +1,17 @@
 package co.edu.uniquindio.alquilafacil.model;
 
-import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
-import co.edu.uniquindio.alquilafacil.exceptions.ErrorEnIngresoFechasException;
-import co.edu.uniquindio.alquilafacil.exceptions.InformacionRepetidaException;
-import co.edu.uniquindio.alquilafacil.exceptions.NumeroNegativoException;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import co.edu.uniquindio.alquilafacil.exceptions.*;
+import javafx.scene.control.Alert;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
-
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
+import java.util.stream.Collectors;
+
 @Getter
 @Log
 
@@ -27,38 +21,46 @@ public class AlquilaFacil {
     List<Vehiculo> vehiculos;
     List<Alquiler> alquileres;
 
+    @Getter
+    private final ResourceBundle resourceBundle;
+
     private static AlquilaFacil alquilaFacil;
 
     private AlquilaFacil(){
 
+        this.resourceBundle = ResourceBundle.getBundle("textos", new Locale("en"));
+
         try {
+
             FileHandler fh = new FileHandler("logs.log", true);
             fh.setFormatter( new SimpleFormatter());
             log.addHandler(fh);
+
         }catch (IOException e){
             log.severe(e.getMessage());
         }
 
         this.vehiculos = new ArrayList<>();
         vehiculos.add(Vehiculo.builder()
-                        .placa("HGY-45D")
-                        .referencia("159842")
-                        .marca("Renault")
-                        .modelo("2020")
-                        .kilometraje("1210")
-                        .precioAlquilerPorDia(1500.0)
-                        .automatico("SI")
-                        .numeroAsientos("4")
-                        .build());
+                .placa("HGY-45D")
+                .referencia("4")
+                .marca("Renault")
+                .modelo("2020")
+                .kilometraje("1210")
+                .precioAlquilerPorDia(100.0)
+                .automatico("SI")
+                .numeroAsientos("4")
+                .imagenPath("https://acnews.blob.core.windows.net/imgnews/small/NAZ_f55645efc0bd45c58f55fd926dc53e79.jpg")
+                .build());
         this.clientes = new ArrayList<>();
         clientes.add(Cliente.builder()
-                        .cedula("1594")
-                        .nombreCompleto("Ricardo Marin")
-                        .nroTelefono("123")
-                        .email("ricard@empresa.com")
-                        .ciudad("Armenia")
-                        .direccionResidencia("Salento")
-                        .build());
+                .cedula("1234")
+                .nombreCompleto("Ricardo Marin")
+                .nroTelefono("123")
+                .email("ricard@empresa.com")
+                .ciudad("Armenia")
+                .direccionResidencia("Salento")
+                .build());
         this.alquileres = new ArrayList<>();
     }
 
@@ -75,14 +77,16 @@ public class AlquilaFacil {
 
     public void registrarCliente(String cedula, String nombreCompleto, String nroTelefono, String email, String ciudad, String direccionResidencia) throws AtributoVacioException, InformacionRepetidaException {
 
-        if (cedula == null || cedula.isBlank()){
+        if (cedula == null || cedula.isBlank() || nombreCompleto == null || nombreCompleto.isBlank() || nroTelefono == null || nroTelefono.isBlank()){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
             log.info("Se ha hecho un intento de registro de cliente con campos vacios.");
-            throw new AtributoVacioException("El campo cédula es obligatorio.");
+            throw new AtributoVacioException(this.getResourceBundle().getString("textoAtributoVacioException"));
         }
 
         if (clientes.stream().anyMatch(cliente -> cliente.getCedula().equals(cedula))){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorInformacionRepetida"), this.getResourceBundle().getString("textoContenidoAlertaErrorInformacionRepetida"));
             log.info("Se ha hecho un intento de registro de cliente con datos repetidos.");
-            throw new InformacionRepetidaException("La cédula ya se encuentra registrada.");
+            throw new InformacionRepetidaException(this.getResourceBundle().getString("textoInformacionRepetidaException"));
         }
 
         Cliente cliente = Cliente.builder()
@@ -103,16 +107,24 @@ public class AlquilaFacil {
 
     public void registrarVehiculo(String placa, String referencia, String marca, String modelo
             , String kilometraje, Double precioAlquilerPorDia, String automatico
-            , String numeroSillas) throws InformacionRepetidaException, NumeroNegativoException {
+            , String numeroSillas, String imagePath) throws InformacionRepetidaException, NumeroNegativoException, AtributoVacioException {
+
+        if (placa == null || placa.isBlank() || referencia == null || referencia.isBlank() || marca == null || marca.isBlank() || modelo == null || modelo.isBlank() || kilometraje == null || kilometraje.isBlank() || automatico == null || automatico.isBlank() || numeroSillas == null || numeroSillas.isBlank()){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
+            log.info("Se ha hecho un intento de registro de vehiculo con campos vacios.");
+            throw new AtributoVacioException(this.getResourceBundle().getString("textoAtributoVacioException"));
+        }
 
         if (vehiculos.stream().anyMatch(vehiculo -> vehiculo.getPlaca().equals(placa))){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorInformacionRepetida"), this.getResourceBundle().getString("textoContenidoAlertaErrorInformacionRepetida"));
             log.info("Se ha hecho un intento de resgistro de vehiculo con datos repetidos");
-            throw new InformacionRepetidaException("El vehiculo ya se encuentra registrado.");
+            throw new InformacionRepetidaException(this.getResourceBundle().getString("textoInformacionRepetidaException"));
         }
 
         if (precioAlquilerPorDia < 0){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorNumeroNegativo"), this.getResourceBundle().getString("textoContenidoAlertaErrorNumeroNegativo"));
             log.info("Se han ingresado valores invalidos.");
-            throw new NumeroNegativoException("El valor no puede ser negativo.");
+            throw new NumeroNegativoException(this.getResourceBundle().getString("textoNumeroNegativoException"));
         }
 
         Vehiculo vehiculo = Vehiculo.builder()
@@ -124,6 +136,7 @@ public class AlquilaFacil {
                 .precioAlquilerPorDia(precioAlquilerPorDia)
                 .automatico(automatico)
                 .numeroAsientos(numeroSillas)
+                .imagenPath(imagePath)
                 .build();
 
         vehiculos.add(vehiculo);
@@ -132,33 +145,106 @@ public class AlquilaFacil {
 
     }
 
-    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDateTime fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException {
+    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDate fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException, AtributoVacioException, AlquilerInvalidoException {
 
-        if (fechaAlquier.isAfter(fechaRegreso)){
-            log.info("Las fechas fueron incorrectamente colocadas.");
-            throw new ErrorEnIngresoFechasException("La fecha de alquiler no puede ser después de la fecha de devolución.");
+        if (cedulaCliente == null || cedulaCliente.isBlank()|| fechaAlquier == null || fechaRegreso == null){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
+            log.info("Se ha hecho un intento de registro de alquiler con campos vacios.");
+            throw new AtributoVacioException(this.getResourceBundle().getString("textoAtributoVacioException"));
         }
 
-        long days = fechaAlquier.until(fechaRegreso, ChronoUnit.DAYS);
+        if (placaVehiculo == null || placaVehiculo.isBlank()){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
+            log.info("Se ha hecho un intento de registro de alquiler sin seleccionar un vehiculo.");
+            throw new AtributoVacioException(this.getResourceBundle().getString("textoAtributoVacioException"));
+        }
 
-        Alquiler alquiler = Alquiler.builder()
-                .cedulaCliente(cedulaCliente)
-                .placaVehiculo(placaVehiculo)
-                .fechaAlquiler(fechaAlquier)
-                .fechaRegreso(fechaRegreso)
-                .fechaRegistro(fechaRegistro)
-                .valorTotal(valorTotal)
-                .build();
+        if (fechaAlquier.isAfter(fechaRegreso)){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorFechas"), this.getResourceBundle().getString("textoContenidoAlertaErrorFechas"));
+            log.info("Las fechas fueron incorrectamente colocadas, la fecha de alquiler no puede ser después de la fecha de regreso.");
+            throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
+        }
 
-        alquileres.add(alquiler);
+        if (alquileres.stream().anyMatch(alquiler -> fechaRegreso.isAfter(alquiler.getFechaAlquiler()))){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
+            log.info("Se ha intentado hacer un alquiler con una fecha inválida");
+            throw new AlquilerInvalidoException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
+        }
 
-        log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo + " a el cliente con la cedula " + cedulaCliente);
+        if (alquileres.stream().anyMatch(alquiler -> fechaAlquier.isBefore(alquiler.getFechaRegreso()))){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
+            log.info("Se ha intentado hacer un alquiler con una fecha inválida");
+            throw new AlquilerInvalidoException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
+        }
+
+
+        if (clientes.stream().anyMatch(cliente -> cliente.getCedula().equals(cedulaCliente))){
+
+            long days = fechaAlquier.until(fechaRegreso, ChronoUnit.DAYS);
+
+            Alquiler alquiler = Alquiler.builder()
+                    .cedulaCliente(cedulaCliente)
+                    .placaVehiculo(placaVehiculo)
+                    .fechaAlquiler(fechaAlquier)
+                    .fechaRegreso(fechaRegreso)
+                    .fechaRegistro(fechaRegistro)
+                    .valorTotal(valorTotal)
+                    .build();
+
+            alquileres.add(alquiler);
+
+            log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo.substring(23, placaVehiculo.length() - 1) + " a el cliente con la cedula " + cedulaCliente);
+
+        } else {
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacioCedulaNoRegistrada"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacioCedulaNoRegistrada"));
+            log.info("Se ha hecho un intento de registro de alquiler con cédula inválida.");
+            throw new AtributoVacioException(this.getResourceBundle().getString("textoAtributoVacioException"));
+        }
 
     }
 
-    public Cliente obtenerCliente(String cedula){
-        return (Cliente) clientes.stream().filter(cliente -> cliente.getCedula().equals(cedula));
+    public Double calcularTotalGanadoEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) throws ErrorEnIngresoFechasException, AtributoVacioException {
+
+        if (fechaInicio.isAfter(fechaFin)){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorFechas"), this.getResourceBundle().getString("textoContenidoAlertaErrorFechas"));
+            log.info("Las fechas fueron incorrectamente colocadas, la fecha de alquiler no puede ser después de la fecha de regreso.");
+            throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
+        }
+
+        if (fechaInicio == null || fechaFin == null){
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
+            log.info("Se ha hecho un intento de registro de alquiler con campos vacios.");
+            throw new AtributoVacioException(this.getResourceBundle().getString("textoAtributoVacioException"));
+        }
+
+        List<Alquiler> alquilersEntreFechas = alquileres.stream().filter(alquiler -> {
+            if (alquiler.getFechaAlquiler().equals(fechaInicio) || alquiler.getFechaAlquiler().isAfter(fechaInicio)){
+                if (alquiler.getFechaRegreso().equals(fechaFin) || alquiler.getFechaRegreso().isBefore(fechaFin)){
+                    return true;
+                }
+            }
+            return false;
+        }).toList();
+        return alquilersEntreFechas.stream().mapToDouble(Alquiler::getValorTotal).sum();
     }
 
+    public String conocerMarcaMasVendida(){
+        Map<String, Long> agruparRepeticionesDeMarcas = alquileres.stream().collect(Collectors.groupingBy(Alquiler::getPlacaVehiculo, Collectors.counting()));
+        return agruparRepeticionesDeMarcas.entrySet().stream().max(Map.Entry.comparingByKey()).map(Map.Entry::getKey).orElse(null);
+    }
 
+    public void crearAlertaError(String tituloError, String contenidoError){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(tituloError);
+        alert.setContentText(contenidoError);
+        alert.show();
+    }
+
+    public void crearAlertaInfo(String tituloError, String encabezadoError, String contenidoError){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(tituloError);
+        alert.setHeaderText(encabezadoError);
+        alert.setContentText(contenidoError);
+        alert.show();
+    }
 }

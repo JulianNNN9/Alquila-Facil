@@ -4,13 +4,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 90, 205));" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.alquilafacil.controllers.VentanaPrincipalController">
-    <Label layoutX="187.0" layoutY="63.0" text="Alquila facil">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 5; -fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 90, 205));" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.alquilafacil.controllers.VentanaPrincipalController">
+    <Label fx:id="lblTituloVentanaPrincipal" alignment="CENTER" layoutX="101.0" layoutY="46.0" prefHeight="55.0" prefWidth="400.0" textAlignment="CENTER">
         <font>
             <Font name="Candara Bold" size="45.0" />
         </font>
     </Label>
-   <Button fx:id="btnRegistrarCliente" onAction="#onRegistrarClienteClick" layoutX="231.0" layoutY="170.0" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(100, 239, 232); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar un cliente" />
-   <Button fx:id="btnRegistrarVehiculo" onAction="#onRegistrarVehiculoClick" layoutX="225.0" layoutY="230.0" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(100, 239, 232); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar un vehiculo" />
-   <Button fx:id="btnHacerAlquiler" onAction="#onHacerAlquilerClick" layoutX="238.0" layoutY="290.0" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(100, 239, 232); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Hacer un alquiler" />
+    <Button fx:id="btnCerrarVentana" layoutX="560.0" mnemonicParsing="false" onAction="#onCerrarVentanaClick" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-font-size: 20px; -fx-alignment: top-left; -fx-font-style: oblique;" text="X" />
+   <GridPane layoutX="174.0" layoutY="137.0" prefHeight="141.0" prefWidth="253.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+          <Button fx:id="btnRegistrarCliente" mnemonicParsing="false" onAction="#onRegistrarClienteClick" style="-fx-font-size: 12px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" textAlignment="CENTER" GridPane.halignment="CENTER" />
+         <Button fx:id="btnRegistrarVehiculo" mnemonicParsing="false" onAction="#onRegistrarVehiculoClick" style="-fx-font-size: 12px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+         <Button fx:id="btnHacerAlquiler" mnemonicParsing="false" onAction="#onHacerAlquilerClick" style="-fx-font-size: 12px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      </children>
+   </GridPane>
+   <Pane layoutX="72.0" layoutY="338.0" prefHeight="32.0" prefWidth="229.0">
+      <children>
+         <Button fx:id="btnCalcularTotalGanado" alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="1.0" mnemonicParsing="false" onAction="#onCalcularTotalGanadoClick" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-underline: true; -fx-alignment: center; " />
+      </children>
+   </Pane>
+   <Pane layoutX="301.0" layoutY="338.0" prefHeight="32.0" prefWidth="229.0">
+      <children>
+         <Button fx:id="btnMarcaMasVendida" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="3.0" mnemonicParsing="false" onAction="#onMarcaMasVendidaClick" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-underline: true; -fx-alignment: center; " textAlignment="CENTER" />
+      </children>
+   </Pane>
 </AnchorPane>

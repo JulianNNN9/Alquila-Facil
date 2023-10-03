@@ -5,41 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="759079e2-dde8-4960-8df8-61bb801c7145" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/app/AlquilaFacilApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroClienteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroVehiculoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/exceptions/AtributoVacioException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/exceptions/InformacionRepetidaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/exceptions/NumeroNegativoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Alquiler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Vehiculo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroCliente.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/src/main/java/co/edu/uniquindio/practicamanejoarchivos/model/Alquiler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/src/main/java/co/edu/uniquindio/practicamanejoarchivos/model/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/src/main/java/co/edu/uniquindio/practicamanejoarchivos/model/Factura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PracticaManejoArchivos/src/main/java/co/edu/uniquindio/practicamanejoarchivos/model/Vehiculo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroVehiculoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroVehiculoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroCliente.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,14 +25,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -64,6 +46,9 @@
         <option name="mavenHome" value="Use Maven wrapper" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -83,18 +68,19 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;julian&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Julian&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/Descargas/AlquilaFacil&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/IntelliJ IDEA - workspace/Alquila-Facil&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.46206897&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -103,6 +89,8 @@
       <recent name="G:\IntelliJ IDEA - workspace\AlquilaFacil\src\main\resources\co\edu\uniquindio\alquilafacil" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\IntelliJ IDEA - workspace\Alquila-Facil\src\main\resources" />
+      <recent name="G:\IntelliJ IDEA - workspace\Alquila-Facil\src\main\resources\co\edu\uniquindio\alquilafacil" />
       <recent name="G:\IntelliJ IDEA - workspace\AlquilaFacil\src\main\resources\co\edu\uniquindio\alquilafacil\styles" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -134,11 +122,99 @@
       <workItem from="1696022709957" duration="48000" />
       <workItem from="1696026005144" duration="150000" />
       <workItem from="1696039608907" duration="633000" />
+      <workItem from="1696041405693" duration="36000" />
+      <workItem from="1696084177094" duration="10151000" />
+      <workItem from="1696102442087" duration="8462000" />
+      <workItem from="1696122011625" duration="2088000" />
+      <workItem from="1696213584724" duration="2630000" />
+      <workItem from="1696257881118" duration="184000" />
+      <workItem from="1696273501909" duration="6584000" />
+      <workItem from="1696292435652" duration="15147000" />
+      <workItem from="1696342797973" duration="3275000" />
     </task>
+    <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
+      <option name="closed" value="true" />
+      <created>1696094327559</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696094327559</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Cambios en las ventanas y nuevo boton que calcula el valor total automaticamente.">
+      <option name="closed" value="true" />
+      <created>1696110100525</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696110100525</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Se han corregido repeticiones en el código y se ha corregido error en la ventana y controller de el alquiler.">
+      <option name="closed" value="true" />
+      <created>1696216211630</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696216211630</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Se agrega el archivo properties y se agregan la vista previa del vehiculo a alquilar, limitar el ingreso a solo valores numericos.">
+      <option name="closed" value="true" />
+      <created>1696293460371</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696293460371</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Se han llenado los properties en ingles.">
+      <option name="closed" value="true" />
+      <created>1696297297029</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696297297029</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)">
+      <option name="closed" value="true" />
+      <created>1696297624387</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696297624387</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Se crea la nueva ventana de calcular las ganancias (con todo).">
+      <option name="closed" value="true" />
+      <created>1696307627776</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696307627776</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando." />
+    <MESSAGE value="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)" />
+    <MESSAGE value="Cambios en las ventanas y nuevo boton que calcula el valor total automaticamente." />
+    <MESSAGE value="Se han corregido repeticiones en el código y se ha corregido error en la ventana y controller de el alquiler." />
+    <MESSAGE value="Se agrega el archivo properties y se agregan la vista previa del vehiculo a alquilar, limitar el ingreso a solo valores numericos." />
+    <MESSAGE value="Se han llenado los properties en ingles." />
+    <MESSAGE value="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)" />
+    <MESSAGE value="Se crea la nueva ventana de calcular las ganancias (con todo)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se crea la nueva ventana de calcular las ganancias (con todo)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

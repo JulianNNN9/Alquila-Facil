@@ -39,13 +39,15 @@ public class RegistroVehiculoController {
     @FXML
     public TextField txtFldNumeroAsientos;
     @FXML
+    public TextField txtFldImagePath;
+    @FXML
     public Button btnRegistrarVehiculo;
     @FXML
     public Button btnCerrarVentana;
 
     public void onRegistrarVehiculoClick(ActionEvent actionEvent) throws NumeroNegativoException, InformacionRepetidaException, AtributoVacioException, IOException {
 
-        alquilaFacil.registrarVehiculo(txtFldPlaca.getText(), txtFldReferencia.getText(), txtFldMarca.getText(), txtFldModelo.getText(), txtFldKilometraje.getText(), Double.valueOf(txtFldPrecioAlquierPorDia.getText()), txtFldAutomatico.getText(), txtFldNumeroAsientos.getText());
+        alquilaFacil.registrarVehiculo(txtFldPlaca.getText(), txtFldReferencia.getText(), txtFldMarca.getText(), txtFldModelo.getText(), txtFldKilometraje.getText(), Double.valueOf(txtFldPrecioAlquierPorDia.getText()), txtFldAutomatico.getText(), txtFldNumeroAsientos.getText(), txtFldImagePath.getText());
 
         File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
         FXMLLoader loader = new FXMLLoader(url.toURL());

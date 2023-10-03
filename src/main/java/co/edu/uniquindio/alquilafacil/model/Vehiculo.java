@@ -18,5 +18,6 @@ public class Vehiculo {
     private Double precioAlquilerPorDia;
     private String automatico;
     private String numeroAsientos;
+    private String imagenPath;
 
 }

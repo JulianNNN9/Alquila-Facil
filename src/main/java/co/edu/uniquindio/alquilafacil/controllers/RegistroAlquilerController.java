@@ -4,6 +4,7 @@ import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
 import co.edu.uniquindio.alquilafacil.exceptions.ErrorEnIngresoFechasException;
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
 import co.edu.uniquindio.alquilafacil.model.Vehiculo;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,9 +13,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.converter.IntegerStringConverter;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -71,6 +78,9 @@ public class RegistroAlquilerController {
     @FXML
     public Button btnCalcularValorTotal;
 
+    @FXML
+    private ImageView imageView;
+
     public void initialize(){
         ObservableList<Vehiculo> observableList = tablaVehiculos.getItems();
         observableList.addAll(alquilaFacil.getVehiculos());
@@ -83,6 +93,24 @@ public class RegistroAlquilerController {
         this.colAlquilerXDia.setCellValueFactory(new PropertyValueFactory<>("precioAlquilerPorDia"));
         this.colAutomatico.setCellValueFactory(new PropertyValueFactory<>("automatico"));
         this.colNumeroAsientos.setCellValueFactory(new PropertyValueFactory<>("numeroAsientos"));
+
+        tablaVehiculos.addEventHandler(MouseEvent.MOUSE_CLICKED, (mouseEvent -> {
+            String selectedItem = tablaVehiculos.getSelectionModel().getSelectedItem().getImagenPath();
+            Image image = new Image(selectedItem);
+            imageView.setImage(image);
+        }));
+
+        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, change -> {
+            String nuevoTexto = change.getControlNewText();
+            if (nuevoTexto.matches("[0-9]*")) {
+                return change;
+            }
+            alquilaFacil.crearAlertaInfo("Error en el ingreso de datos", "Solo se pueden ingresar valores numericos.");
+            return null;
+        });
+
+        txtFldValorTotal.setTextFormatter(textFormatter);
+
     }
 
     public void onRegistrarAlquilerClick(ActionEvent actionEvent) throws ErrorEnIngresoFechasException, AtributoVacioException, IOException {
@@ -129,7 +157,6 @@ public class RegistroAlquilerController {
         }
     }
 
-
     @FXML
     private void onCerrarVentanaClick(ActionEvent event) throws IOException {
 
@@ -145,6 +172,14 @@ public class RegistroAlquilerController {
 
         Stage stage1 = (Stage) this.btnCerrarVentana.getScene().getWindow();
         stage1.close();
+    }
+
+    private void txtEnNumeros(KeyEvent keyEvent){
+        String caracter = keyEvent.getCharacter();
+        if (Character.isLetter(Integer.parseInt(caracter))){
+            keyEvent.consume();
+            alquilaFacil.crearAlertaInfo("Error en ingreso de datos", "El valor total solo permite números.");
+        }
     }
 
 }

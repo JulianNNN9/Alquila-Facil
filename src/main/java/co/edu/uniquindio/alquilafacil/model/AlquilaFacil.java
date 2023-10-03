@@ -49,13 +49,14 @@ public class AlquilaFacil {
         this.vehiculos = new ArrayList<>();
         vehiculos.add(Vehiculo.builder()
                 .placa("HGY-45D")
-                .referencia("159842")
+                .referencia("4")
                 .marca("Renault")
                 .modelo("2020")
                 .kilometraje("1210")
                 .precioAlquilerPorDia(100.0)
                 .automatico("SI")
                 .numeroAsientos("4")
+                .imagenPath("https://acnews.blob.core.windows.net/imgnews/small/NAZ_f55645efc0bd45c58f55fd926dc53e79.jpg")
                 .build());
         this.clientes = new ArrayList<>();
         clientes.add(Cliente.builder()
@@ -112,7 +113,7 @@ public class AlquilaFacil {
 
     public void registrarVehiculo(String placa, String referencia, String marca, String modelo
             , String kilometraje, Double precioAlquilerPorDia, String automatico
-            , String numeroSillas) throws InformacionRepetidaException, NumeroNegativoException, AtributoVacioException {
+            , String numeroSillas, String imagePath) throws InformacionRepetidaException, NumeroNegativoException, AtributoVacioException {
 
         if (placa == null || placa.isBlank() || referencia == null || referencia.isBlank() || marca == null || marca.isBlank() || modelo == null || modelo.isBlank() || kilometraje == null || kilometraje.isBlank() || automatico == null || automatico.isBlank() || numeroSillas == null || numeroSillas.isBlank()){
             crearAlertaError("Campo obligatorio*", "Se debe ingresar todos los datos obligatoriamente.");
@@ -141,6 +142,7 @@ public class AlquilaFacil {
                 .precioAlquilerPorDia(precioAlquilerPorDia)
                 .automatico(automatico)
                 .numeroAsientos(numeroSillas)
+                .imagenPath(imagePath)
                 .build();
 
         vehiculos.add(vehiculo);

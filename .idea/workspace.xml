@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="759079e2-dde8-4960-8df8-61bb801c7145" name="Changes" comment="">
+    <list default="true" id="759079e2-dde8-4960-8df8-61bb801c7145" name="Changes" comment="Se ha arreglado el error en la validacion de las fechas para hacer una alquiler.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +124,7 @@
       <workItem from="1696273501909" duration="6584000" />
       <workItem from="1696292435652" duration="15147000" />
       <workItem from="1696342797973" duration="4412000" />
-      <workItem from="1696348623380" duration="3000000" />
+      <workItem from="1696348623380" duration="3751000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />
@@ -191,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696346159252</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Se ha arreglado el error en la validacion de las fechas para hacer una alquiler.">
+      <option name="closed" value="true" />
+      <created>1696351731425</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696351731425</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +225,8 @@
     <MESSAGE value="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)" />
     <MESSAGE value="Se crea la nueva ventana de calcular las ganancias (con todo)." />
     <MESSAGE value="Se crea la nueva funcionalidad de conocer la marca que más se vende mediante una alerta de informacion." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se crea la nueva funcionalidad de conocer la marca que más se vende mediante una alerta de informacion." />
+    <MESSAGE value="Se ha arreglado el error en la validacion de las fechas para hacer una alquiler." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se ha arreglado el error en la validacion de las fechas para hacer una alquiler." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

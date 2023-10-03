@@ -165,18 +165,12 @@ public class AlquilaFacil {
             throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
         }
 
-        if (alquileres.stream().anyMatch(alquiler -> fechaRegreso.isAfter(alquiler.getFechaAlquiler()))){
-            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
-            log.info("Se ha intentado hacer un alquiler con una fecha inválida");
-            throw new AlquilerInvalidoException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
-        }
-
         List<Alquiler> alquileresSuperpuestos = alquileres.stream()
                 .filter(alquiler -> !(!fechaRegreso.isAfter(alquiler.getFechaAlquiler()) ||
                                 !fechaAlquier.isBefore(alquiler.getFechaRegreso())))
                 .toList();
         if (alquileresSuperpuestos.isEmpty()){
-            log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo.substring(23, placaVehiculo.length() - 1) + " a el cliente con la cedula " + cedulaCliente);
+            log.info("Las fechas de alquiler son validas.");
         } else {
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
             log.info("Se ha intentado hacer un alquiler con una fecha inválida");

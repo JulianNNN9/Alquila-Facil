@@ -133,7 +133,7 @@ public class RegistroAlquilerController {
 
     public void onRegistrarAlquilerClick() throws ErrorEnIngresoFechasException, AtributoVacioException, IOException, AlquilerInvalidoException {
 
-        alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString(), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), LocalDate.now(), Double.parseDouble(txtFldValorTotal.getText()));
+        alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), LocalDate.now(), Double.parseDouble(txtFldValorTotal.getText()));
 
         File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
         FXMLLoader loader = new FXMLLoader(url.toURL());

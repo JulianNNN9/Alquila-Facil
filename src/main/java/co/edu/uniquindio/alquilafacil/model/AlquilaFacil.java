@@ -52,6 +52,28 @@ public class AlquilaFacil {
                 .numeroAsientos("4")
                 .imagenPath("https://acnews.blob.core.windows.net/imgnews/small/NAZ_f55645efc0bd45c58f55fd926dc53e79.jpg")
                 .build());
+        vehiculos.add(Vehiculo.builder()
+                .placa("GYI-498")
+                .referencia("Supra mk-4")
+                .marca("Toyota")
+                .modelo("1996")
+                .kilometraje("12560")
+                .precioAlquilerPorDia(350.0)
+                .automatico("NO")
+                .numeroAsientos("4")
+                .imagenPath("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO8FoVKACLVSfsQ0KG0L5b4l1XMqnZ51AQ8Q&usqp=CAU")
+                .build());
+        vehiculos.add(Vehiculo.builder()
+                .placa("SRE-48S")
+                .referencia("Yaris")
+                .marca("Toyota")
+                .modelo("2023")
+                .kilometraje("12")
+                .precioAlquilerPorDia(500.0)
+                .automatico("NO")
+                .numeroAsientos("4")
+                .imagenPath("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXccxb8SibFKVOmpKUOG9qeY72lio8VIdiig&usqp=CAU")
+                .build());
         this.clientes = new ArrayList<>();
         clientes.add(Cliente.builder()
                 .cedula("1234")
@@ -165,16 +187,10 @@ public class AlquilaFacil {
             throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
         }
 
-        List<Alquiler> alquileresSuperpuestos = alquileres.stream()
-                .filter(alquiler -> !(!fechaRegreso.isAfter(alquiler.getFechaAlquiler()) ||
-                                !fechaAlquier.isBefore(alquiler.getFechaRegreso())))
-                .toList();
-        if (alquileresSuperpuestos.isEmpty()){
-            log.info("Las fechas de alquiler son validas.");
-        } else {
-            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
-            log.info("Se ha intentado hacer un alquiler con una fecha inválida");
-            throw new AlquilerInvalidoException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
+        if (validarFechasAlquiler(fechaAlquier, fechaRegreso, placaVehiculo)) {
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorFechas"), this.getResourceBundle().getString("textoContenidoAlertaErrorFechas"));
+            log.info("Las fechas fueron incorrectamente colocadas, la fecha de alquiler no puede ser después de la fecha de regreso.");
+            throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
         }
 
         if (clientes.stream().anyMatch(cliente -> cliente.getCedula().equals(cedulaCliente))){
@@ -192,7 +208,7 @@ public class AlquilaFacil {
 
             alquileres.add(alquiler);
 
-            log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo.substring(23, placaVehiculo.length() - 1) + " a el cliente con la cedula " + cedulaCliente);
+            log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo + " a el cliente con la cedula " + cedulaCliente);
 
         } else {
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacioCedulaNoRegistrada"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacioCedulaNoRegistrada"));
@@ -233,9 +249,22 @@ public class AlquilaFacil {
     }
 
     public String conocerMarcaMasVendida(){
+        System.out.println(alquileres);
         List<Vehiculo> vehiculosEnAlquiler = encontrarVehiculosEnAlquiler();
-        Map<String, Long> agruparRepeticionesDeMarcas = vehiculosEnAlquiler.stream().collect(Collectors.groupingBy(Vehiculo::getMarca, Collectors.counting()));
-        return agruparRepeticionesDeMarcas.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(null);
+        System.out.println(vehiculosEnAlquiler);
+        Map<String, Long> agruparPorMarca = vehiculosEnAlquiler.stream()
+                .collect(Collectors.groupingBy(Vehiculo::getMarca, Collectors.counting()));
+        Optional<Map.Entry<String, Long>> marcaMasVendida = agruparPorMarca.entrySet().stream()
+                .max(Map.Entry.comparingByValue());
+        return marcaMasVendida.map(Map.Entry::getKey).orElse(null);
+    }
+
+    public boolean validarFechasAlquiler(LocalDate fechaAlquiler, LocalDate fechaRegreso, String placaVehiculo) {
+        return alquileres.stream()
+                .filter(alquiler -> alquiler.getPlacaVehiculo().equals(placaVehiculo))
+                .anyMatch(alquiler ->
+                        !(!fechaRegreso.isBefore(alquiler.getFechaAlquiler()) ||
+                                !fechaAlquiler.isAfter(alquiler.getFechaRegreso())));
     }
 
     public void crearAlertaError(String tituloError, String contenidoError){

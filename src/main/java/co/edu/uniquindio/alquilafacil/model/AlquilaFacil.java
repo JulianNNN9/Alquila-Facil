@@ -28,7 +28,7 @@ public class AlquilaFacil {
 
     private AlquilaFacil(){
 
-        this.resourceBundle = ResourceBundle.getBundle("textos", new Locale("en"));
+        this.resourceBundle = ResourceBundle.getBundle("textos");
 
         try {
 
@@ -171,12 +171,17 @@ public class AlquilaFacil {
             throw new AlquilerInvalidoException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
         }
 
-        if (alquileres.stream().anyMatch(alquiler -> fechaAlquier.isBefore(alquiler.getFechaRegreso()))){
+        List<Alquiler> alquileresSuperpuestos = alquileres.stream()
+                .filter(alquiler -> !(!fechaRegreso.isAfter(alquiler.getFechaAlquiler()) ||
+                                !fechaAlquier.isBefore(alquiler.getFechaRegreso())))
+                .toList();
+        if (alquileresSuperpuestos.isEmpty()){
+            log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo.substring(23, placaVehiculo.length() - 1) + " a el cliente con la cedula " + cedulaCliente);
+        } else {
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
             log.info("Se ha intentado hacer un alquiler con una fecha inválida");
             throw new AlquilerInvalidoException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
         }
-
 
         if (clientes.stream().anyMatch(cliente -> cliente.getCedula().equals(cedulaCliente))){
 
@@ -228,9 +233,15 @@ public class AlquilaFacil {
         return alquilersEntreFechas.stream().mapToDouble(Alquiler::getValorTotal).sum();
     }
 
+    public List<Vehiculo> encontrarVehiculosEnAlquiler(){
+        List<String> placaList = alquileres.stream().map(Alquiler::getPlacaVehiculo).toList();
+        return vehiculos.stream().filter(vehiculo -> placaList.contains(vehiculo.getPlaca())).collect(Collectors.toList());
+    }
+
     public String conocerMarcaMasVendida(){
-        Map<String, Long> agruparRepeticionesDeMarcas = alquileres.stream().collect(Collectors.groupingBy(Alquiler::getPlacaVehiculo, Collectors.counting()));
-        return agruparRepeticionesDeMarcas.entrySet().stream().max(Map.Entry.comparingByKey()).map(Map.Entry::getKey).orElse(null);
+        List<Vehiculo> vehiculosEnAlquiler = encontrarVehiculosEnAlquiler();
+        Map<String, Long> agruparRepeticionesDeMarcas = vehiculosEnAlquiler.stream().collect(Collectors.groupingBy(Vehiculo::getMarca, Collectors.counting()));
+        return agruparRepeticionesDeMarcas.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(null);
     }
 
     public void crearAlertaError(String tituloError, String contenidoError){

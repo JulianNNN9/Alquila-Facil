@@ -1584,3 +1584,61 @@ oct. 03, 2023 10:11:07 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil g
 INFO: Se crea una nueva instancia de AlquilaFacil
 oct. 03, 2023 10:14:46 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
 INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 10:59:06 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 10:59:47 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 10:59:57 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:00:04 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:09:45 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:09:48 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:11:11 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:11:13 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:11:48 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarVehiculo
+INFO: Se ha registrado un vehiculo con placa fdas
+oct. 03, 2023 11:11:48 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:11:50 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:12:02 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarVehiculo
+INFO: Se ha registrado un vehiculo con placa dsa
+oct. 03, 2023 11:12:02 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:12:07 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:12:22 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha registrado un alquier del vehiculo con la placa fdas a el cliente con la cedula 1234
+oct. 03, 2023 11:12:22 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:12:27 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:12:39 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha intentado hacer un alquiler con una fecha inválida
+oct. 03, 2023 11:12:57 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil registrarAlquiler
+INFO: Se ha intentado hacer un alquiler con una fecha inválida
+oct. 03, 2023 11:13:04 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:13:42 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:13:44 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:14:32 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:14:44 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:14:46 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:15:26 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:27:49 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:27:50 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil
+oct. 03, 2023 11:48:01 A. M. co.edu.uniquindio.alquilafacil.model.AlquilaFacil getInstance
+INFO: Se crea una nueva instancia de AlquilaFacil

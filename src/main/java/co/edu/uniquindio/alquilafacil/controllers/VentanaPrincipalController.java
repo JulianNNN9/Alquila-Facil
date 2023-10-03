@@ -116,7 +116,7 @@ public class VentanaPrincipalController {
     }
 
     public void onMarcaMasVendidaClick() {
-        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoMarcaMasVendida"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContextoAlertaInfoMarcaMasVendida") + alquilaFacil.conocerMarcaMasVendida() + ".");
+        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoMarcaMasVendida"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContextoAlertaInfoMarcaMasVendida") + " " +alquilaFacil.conocerMarcaMasVendida() + ".");
     }
 
     @FXML

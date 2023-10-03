@@ -18,12 +18,12 @@
               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           </rowConstraints>
-          <Label prefHeight="17.0" prefWidth="48.0" text="Cédula*" ><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label layoutX="10.0" layoutY="17.0" text="Nombre completo*" GridPane.rowIndex="1" ><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label layoutX="10.0" layoutY="47.0" text="Numero telefono*" GridPane.rowIndex="2" ><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Mail" GridPane.rowIndex="3" ><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Ciudad" GridPane.rowIndex="4" ><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Dirección residencia" GridPane.rowIndex="5" ><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblCedula" prefHeight="17.0" prefWidth="48.0" textAlignment="CENTER"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblNombreCompleto" layoutX="10.0" layoutY="17.0" textAlignment="CENTER" GridPane.rowIndex="1"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblNumeroTelefono" layoutX="10.0" layoutY="47.0" textAlignment="CENTER" GridPane.rowIndex="2"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblMail" textAlignment="CENTER" GridPane.rowIndex="3"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblCiudad" textAlignment="CENTER" GridPane.rowIndex="4"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblResidencia" textAlignment="CENTER" GridPane.rowIndex="5"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
           <TextField fx:id="txtFldCedula" GridPane.columnIndex="1" />
           <TextField fx:id="txtFldNombreCompleto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
           <TextField fx:id="txtFldNumeroTelefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -31,11 +31,11 @@
           <TextField fx:id="txtFldCiudad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
           <TextField fx:id="txtFldDireccionResidencia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       </GridPane>
-      <Label layoutX="97.0" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" text="Registrar clientes">
+      <Label fx:id="lblRegistrarClientes" alignment="CENTER" layoutX="59.0" layoutY="23.0" prefHeight="25.0" prefWidth="203.0">
         <font>
             <Font name="Candara Bold" size="16.0" />
         </font>
       </Label>
       <Button fx:id="btnCerrarVentana" layoutX="280.0" mnemonicParsing="false" onAction="#onCerrarVentanaClick" prefHeight="32.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-font-size: 20px; -fx-alignment: top-left; -fx-font-style: oblique;" text="X" />
-      <Button fx:id="btnRegistrarCliente" layoutX="94.0" layoutY="344.0" mnemonicParsing="false" onAction="#onRegistrarClienteClick" prefHeight="32.0" prefWidth="132.0" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar cliente" />
+      <Button fx:id="btnRegistrarCliente" layoutX="76.0" layoutY="337.0" mnemonicParsing="false" onAction="#onRegistrarClienteClick" prefHeight="32.0" prefWidth="169.0" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar cliente" textAlignment="CENTER" />
 </AnchorPane>

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -37,8 +38,35 @@ public class RegistroClienteController {
     public TextField txtFldCiudad;
     @FXML
     public TextField txtFldDireccionResidencia;
+    @FXML
+    public Label lblCedula;
+    @FXML
+    public Label lblNombreCompleto;
+    @FXML
+    public Label lblNumeroTelefono;
+    @FXML
+    public Label lblMail;
+    @FXML
+    public Label lblCiudad;
+    @FXML
+    public Label lblResidencia;
+    @FXML
+    public Label lblRegistrarClientes;
 
-    public void onRegistrarClienteClick(ActionEvent actionEvent) throws AtributoVacioException, InformacionRepetidaException, IOException {
+    public void initialize(){
+
+        lblRegistrarClientes.setText(alquilaFacil.getResourceBundle().getString("textoLabelRegistrarClientes"));
+        lblCedula.setText(alquilaFacil.getResourceBundle().getString("textoLabelCedula"));
+        lblNombreCompleto.setText(alquilaFacil.getResourceBundle().getString("textoLabelNombreCompleto"));
+        lblNumeroTelefono.setText(alquilaFacil.getResourceBundle().getString("textoLabelNumeroTelefono"));
+        lblMail.setText(alquilaFacil.getResourceBundle().getString("textoLabelMail"));
+        lblCiudad.setText(alquilaFacil.getResourceBundle().getString("textoLabelCiudad"));
+        lblResidencia.setText(alquilaFacil.getResourceBundle().getString("textoLabelDireccionResidencia"));
+        btnRegistrarCliente.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarCliente"));
+
+    }
+
+    public void onRegistrarClienteClick() throws AtributoVacioException, InformacionRepetidaException, IOException {
 
         alquilaFacil.registrarCliente(txtFldCedula.getText(), txtFldNombreCompleto.getText(), txtFldNumeroTelefono.getText(), txtFldMail.getText(), txtFldCiudad.getText(), txtFldDireccionResidencia.getText());
 
@@ -52,14 +80,14 @@ public class RegistroClienteController {
         scene.setFill(Color.TRANSPARENT);
         stage.show();
 
-        alquilaFacil.crearAlertaInfo("Registro de cliente", "Se ha registrado el cliente con la cédula " + "'" + txtFldCedula.getText() + "'");
+        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoRegistroCliente"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoRegistroCliente") + "'" + txtFldCedula.getText() + "'");
 
         Stage stage1 = (Stage) this.btnRegistrarCliente.getScene().getWindow();
         stage1.close();
     }
 
     @FXML
-    private void onCerrarVentanaClick(ActionEvent event) throws IOException {
+    private void onCerrarVentanaClick() throws IOException {
 
         File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
         FXMLLoader loader = new FXMLLoader(url.toURL());

@@ -6,6 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="759079e2-dde8-4960-8df8-61bb801c7145" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroAlquilerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroVehiculoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/RegistroVehiculoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroCliente.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +25,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="CSS File" />
         <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -79,8 +89,8 @@
       <recent name="G:\IntelliJ IDEA - workspace\AlquilaFacil\src\main\resources\co\edu\uniquindio\alquilafacil" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\IntelliJ IDEA - workspace\Alquila-Facil\src\main\resources\co\edu\uniquindio\alquilafacil" />
       <recent name="G:\IntelliJ IDEA - workspace\Alquila-Facil\src\main\resources" />
+      <recent name="G:\IntelliJ IDEA - workspace\Alquila-Facil\src\main\resources\co\edu\uniquindio\alquilafacil" />
       <recent name="G:\IntelliJ IDEA - workspace\AlquilaFacil\src\main\resources\co\edu\uniquindio\alquilafacil\styles" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -119,7 +129,7 @@
       <workItem from="1696213584724" duration="2630000" />
       <workItem from="1696257881118" duration="184000" />
       <workItem from="1696273501909" duration="6584000" />
-      <workItem from="1696292435652" duration="5133000" />
+      <workItem from="1696292435652" duration="14979000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />
@@ -161,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696297297029</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)">
+      <option name="closed" value="true" />
+      <created>1696297624387</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696297624387</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,7 +203,8 @@
     <MESSAGE value="Se han corregido repeticiones en el código y se ha corregido error en la ventana y controller de el alquiler." />
     <MESSAGE value="Se agrega el archivo properties y se agregan la vista previa del vehiculo a alquilar, limitar el ingreso a solo valores numericos." />
     <MESSAGE value="Se han llenado los properties en ingles." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se han llenado los properties en ingles." />
+    <MESSAGE value="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

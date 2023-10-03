@@ -21,15 +21,15 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           </rowConstraints>
-          <Label text="Placa*"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label layoutX="10.0" layoutY="17.0" text="Referencia*" GridPane.rowIndex="1"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label layoutX="10.0" layoutY="47.0" text="Marca*" GridPane.rowIndex="2"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Modelo*" GridPane.rowIndex="3"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Kilometraje*" GridPane.rowIndex="4"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Precio Alquier por día*" GridPane.rowIndex="5"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Automático*" GridPane.rowIndex="6"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Numero de asientos*" GridPane.rowIndex="7"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
-          <Label text="Ruta de la imagen*" GridPane.rowIndex="8"><font> <Font name="Candara Bold" size="12.0" /> </font>/> </Label>
+          <Label fx:id="lblPlaca" textAlignment="CENTER"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblReferencia" layoutX="10.0" layoutY="17.0" textAlignment="CENTER" GridPane.rowIndex="1"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblMarca" layoutX="10.0" layoutY="47.0" textAlignment="CENTER" GridPane.rowIndex="2"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblModelo" textAlignment="CENTER" GridPane.rowIndex="3"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblKilometraje" textAlignment="CENTER" GridPane.rowIndex="4"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblPrecioAlquilerXDia" textAlignment="CENTER" GridPane.rowIndex="5"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblAutomatico" textAlignment="CENTER" GridPane.rowIndex="6"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblNumeroAsientos" textAlignment="CENTER" GridPane.rowIndex="7"><font> <Font name="Candara Bold" size="12.0" /> </font> </Label>
+          <Label fx:id="lblRutaImagen" textAlignment="CENTER" GridPane.rowIndex="8"><font> <Font name="Candara Bold" size="12.0" /> </font>/> </Label>
           <TextField fx:id="txtFldPlaca" GridPane.columnIndex="1" />
           <TextField fx:id="txtFldReferencia" GridPane.columnIndex="1" GridPane.rowIndex="1" />
           <TextField fx:id="txtFldMarca" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -40,11 +40,11 @@
           <TextField fx:id="txtFldNumeroAsientos" GridPane.columnIndex="1" GridPane.rowIndex="7" />
           <TextField fx:id="txtFldImagePath" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       </GridPane>
-    <Label layoutX="107.0" layoutY="23.0" prefHeight="25.0" prefWidth="140.0" text="Registrar vehiculos">
+    <Label fx:id="lblRegistrarClientes" alignment="CENTER" layoutX="52.0" layoutY="23.0" prefHeight="25.0" prefWidth="231.0">
         <font>
             <Font name="Candara Bold" size="16.0" />
         </font>
     </Label>
       <Button fx:id="btnCerrarVentana" layoutX="295.0" mnemonicParsing="false" onAction="#onCerrarVentanaClick" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-font-size: 20px; -fx-alignment: top-left; -fx-font-style: oblique;" text="X" />
-      <Button fx:id="btnRegistrarVehiculo" layoutX="102.0" layoutY="425.0" mnemonicParsing="false" onAction="#onRegistrarVehiculoClick" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" text="Registrar vehiculo" />
+      <Button fx:id="btnRegistrarVehiculo" layoutX="75.0" layoutY="406.0" mnemonicParsing="false" onAction="#onRegistrarVehiculoClick" prefHeight="32.0" prefWidth="185.0" style="-fx-font-size: 14px; -fx-alignment: center; -fx-background-color: rgb(151, 239, 232); -fx-background-radius: 6px; -fx-border-color: rgb(123,183,180); -fx-border-radius: 6px; -fx-effect: dropshadow(one-pass-box, black, 6, .5, 2, 2);" textAlignment="CENTER" />
 </AnchorPane>

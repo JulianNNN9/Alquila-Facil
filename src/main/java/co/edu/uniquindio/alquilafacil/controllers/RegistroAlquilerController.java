@@ -1,12 +1,11 @@
 package co.edu.uniquindio.alquilafacil.controllers;
 
+import co.edu.uniquindio.alquilafacil.exceptions.AlquilerInvalidoException;
 import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
 import co.edu.uniquindio.alquilafacil.exceptions.ErrorEnIngresoFechasException;
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
 import co.edu.uniquindio.alquilafacil.model.Vehiculo;
-import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,26 +14,20 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.converter.IntegerStringConverter;
-
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-
-import static java.util.concurrent.TimeUnit.DAYS;
 
 public class RegistroAlquilerController {
 
     /*
 
     ---------------FUNCIONES POR IMPLEMENTAR-----------------
-
-    - Debe validar que el vehículo elegido esté disponible en la fecha que se requiere.
 
     - Escriba un método que retorne el total ganado por alquileres de vehículos durante un rango de fechas.
 
@@ -75,12 +68,40 @@ public class RegistroAlquilerController {
     @FXML
     public TableView<Vehiculo> tablaVehiculos;
     @FXML
-    public Button btnCalcularValorTotal;
+    public Label lblCedulaCliente;
+    @FXML
+    public Label lblFechaAlquiler;
+    @FXML
+    public Label lblFechaRegreso;
+    @FXML
+    public Label lblValorTotal;
+    @FXML
+    public Label lblRegistrarAlquileres;
+    @FXML
+    public Label lblSeleccionVehiculo;
 
     @FXML
     private ImageView imageView;
 
     public void initialize(){
+
+        lblRegistrarAlquileres.setText(alquilaFacil.getResourceBundle().getString("textoLabelRegistrarAlquileres"));
+        lblCedulaCliente.setText(alquilaFacil.getResourceBundle().getString("textoLabelCedulaCliente"));
+        lblFechaAlquiler.setText(alquilaFacil.getResourceBundle().getString("textoLabelFechaAlquiler"));
+        lblFechaRegreso.setText(alquilaFacil.getResourceBundle().getString("textoLabelFechaRegreso"));
+        lblValorTotal.setText(alquilaFacil.getResourceBundle().getString("textoLabelValorTotal"));
+        lblSeleccionVehiculo.setText(alquilaFacil.getResourceBundle().getString("textoLabelSeleccioneVehiculoAlquilar"));
+        btnRegistrarAlquier.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarAlquilar"));
+
+        colPlaca.setText(alquilaFacil.getResourceBundle().getString("textoLabelPlaca"));
+        colReferencia.setText(alquilaFacil.getResourceBundle().getString("textoLabelReferencia"));
+        colMarca.setText(alquilaFacil.getResourceBundle().getString("textoLabelMarca"));
+        colModelo.setText(alquilaFacil.getResourceBundle().getString("textoLabelModelo"));
+        colKilometraje.setText(alquilaFacil.getResourceBundle().getString("textoLabelKilometraje"));
+        colAlquilerXDia.setText(alquilaFacil.getResourceBundle().getString("textoLabelPrecioAlquilerPorDia"));
+        colAutomatico.setText(alquilaFacil.getResourceBundle().getString("textoLabelAutomatico"));
+        colNumeroAsientos.setText(alquilaFacil.getResourceBundle().getString("textoLabelNumeroAsientos"));
+
         ObservableList<Vehiculo> observableList = tablaVehiculos.getItems();
         observableList.addAll(alquilaFacil.getVehiculos());
 
@@ -104,7 +125,7 @@ public class RegistroAlquilerController {
             if (nuevoTexto.matches("[0-9]*")) {
                 return change;
             }
-            alquilaFacil.crearAlertaInfo("Error en el ingreso de datos", "Solo se pueden ingresar valores numericos.");
+            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
             return null;
         });
 
@@ -112,7 +133,7 @@ public class RegistroAlquilerController {
 
     }
 
-    public void onRegistrarAlquilerClick(ActionEvent actionEvent) throws ErrorEnIngresoFechasException, AtributoVacioException, IOException {
+    public void onRegistrarAlquilerClick() throws ErrorEnIngresoFechasException, AtributoVacioException, IOException, AlquilerInvalidoException {
 
         alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString(), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), LocalDate.now(), Double.parseDouble(txtFldValorTotal.getText()));
 
@@ -127,39 +148,22 @@ public class RegistroAlquilerController {
         stage.show();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("FACTURA");
-        alert.setHeaderText("Se ha hecho el alquiler con éxito");
-        alert.setContentText("Cédula cliente: " + txtFldCedulaCliente.getText() + "\n" +
-                "Placa del vehiculo: " + colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1) +"\n" +
-                "Fecha alquiler: " + txtFldFechaAlquier.getValue() + "\n" +
-                "Fecha regreso: " + txtFldFechaRegreso.getValue() + "\n" +
-                "Fecha de registro: " + LocalDate.now() + "\n" +
+        alert.setTitle(alquilaFacil.getResourceBundle().getString("textoFacturaTitulo"));
+        alert.setHeaderText(alquilaFacil.getResourceBundle().getString("textoFacturaEncabezado"));
+        alert.setContentText(alquilaFacil.getResourceBundle().getString("textoFacturaCedulaCliente") + " " + txtFldCedulaCliente.getText() + "\n" +
+                alquilaFacil.getResourceBundle().getString("textoFacturaFechaAlquiler") + " " + colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1) +"\n" +
+                alquilaFacil.getResourceBundle().getString("textoFacturaFechaRegreso") + " " + txtFldFechaAlquier.getValue() + "\n" +
+                alquilaFacil.getResourceBundle().getString("textoFacturaFechaRegistro") + " " + txtFldFechaRegreso.getValue() + "\n" + alquilaFacil.getResourceBundle().getString("textoFacturaCedulaCliente") + LocalDate.now() + "\n" +
                 "\n" +
-                "VALOR TOTAL: " + txtFldValorTotal.getText());
+                alquilaFacil.getResourceBundle().getString("textoFacturaValorTotal") + " " + txtFldValorTotal.getText());
         alert.show();
 
         Stage stage1 = (Stage) this.btnRegistrarAlquier.getScene().getWindow();
         stage1.close();
     }
 
-    public void onCalcularValotTotal(ActionEvent actionEvent) throws AtributoVacioException {
-
-        if (txtFldFechaAlquier.toString().isBlank() || txtFldFechaRegreso.toString().isBlank()){
-
-            alquilaFacil.crearAlertaError("Campo obligatorio*", "Se debe ingresar algunos datos obligatoriamente. (*)");
-
-            throw new AtributoVacioException("Hay atributos que son obligatorios. (*)");
-
-        } else {
-
-            long diasDeDiferencia = DAYS.toChronoUnit().between(txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue());
-            txtFldValorTotal.setText(String.valueOf(Double.parseDouble(colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1)) * diasDeDiferencia));
-
-        }
-    }
-
     @FXML
-    private void onCerrarVentanaClick(ActionEvent event) throws IOException {
+    private void onCerrarVentanaClick() throws IOException {
 
         File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
         FXMLLoader loader = new FXMLLoader(url.toURL());

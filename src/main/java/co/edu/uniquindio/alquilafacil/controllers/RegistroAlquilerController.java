@@ -29,8 +29,6 @@ public class RegistroAlquilerController {
 
     ---------------FUNCIONES POR IMPLEMENTAR-----------------
 
-    - Escriba un método que retorne el total ganado por alquileres de vehículos durante un rango de fechas.
-
     - Escriba un método que retorne la marca de vehículo que más se alquila.
 
      */
@@ -125,7 +123,7 @@ public class RegistroAlquilerController {
             if (nuevoTexto.matches("[0-9]*")) {
                 return change;
             }
-            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
+            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
             return null;
         });
 

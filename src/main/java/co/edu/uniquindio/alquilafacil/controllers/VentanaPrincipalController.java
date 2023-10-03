@@ -28,6 +28,8 @@ public class VentanaPrincipalController {
     public Button btnCalcularTotalGanado;
     @FXML
     public Label lblTituloVentanaPrincipal;
+    @FXML
+    public Button btnMarcaMasVendida;
 
     public void initialize(){
 
@@ -35,7 +37,8 @@ public class VentanaPrincipalController {
         btnRegistrarCliente.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarClienteVentanaPrincipal"));
         btnRegistrarVehiculo.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarVehiculoVentanaPrincipal"));
         btnHacerAlquiler.setText(alquilaFacil.getResourceBundle().getString("textoHacerAlquilerVentanaPrincipal"));
-        btnCalcularTotalGanado.setText(alquilaFacil.getResourceBundle().getString("textoBtnCalcular"));
+        btnCalcularTotalGanado.setText(alquilaFacil.getResourceBundle().getString("textoBotonCalcularTotalGanado"));
+        btnMarcaMasVendida.setText(alquilaFacil.getResourceBundle().getString("textoBotonMarcaMasVendida"));
 
     }
 
@@ -112,9 +115,14 @@ public class VentanaPrincipalController {
         stage1.close();
     }
 
+    public void onMarcaMasVendidaClick() {
+        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoMarcaMasVendida"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContextoAlertaInfoMarcaMasVendida") + alquilaFacil.conocerMarcaMasVendida() + ".");
+    }
+
     @FXML
     private void onCerrarVentanaClick() {
         Stage stage = (Stage) this.btnCerrarVentana.getScene().getWindow();
         stage.close();
     }
+
 }

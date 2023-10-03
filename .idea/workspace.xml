@@ -129,7 +129,8 @@
       <workItem from="1696213584724" duration="2630000" />
       <workItem from="1696257881118" duration="184000" />
       <workItem from="1696273501909" duration="6584000" />
-      <workItem from="1696292435652" duration="14979000" />
+      <workItem from="1696292435652" duration="15147000" />
+      <workItem from="1696342797973" duration="3275000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />
@@ -179,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696297624387</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Se crea la nueva ventana de calcular las ganancias (con todo).">
+      <option name="closed" value="true" />
+      <created>1696307627776</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696307627776</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +213,8 @@
     <MESSAGE value="Se agrega el archivo properties y se agregan la vista previa del vehiculo a alquilar, limitar el ingreso a solo valores numericos." />
     <MESSAGE value="Se han llenado los properties en ingles." />
     <MESSAGE value="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se han llenado los properties en ingles de nuevo (hacia falta una propiedad)" />
+    <MESSAGE value="Se crea la nueva ventana de calcular las ganancias (con todo)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se crea la nueva ventana de calcular las ganancias (con todo)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

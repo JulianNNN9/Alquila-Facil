@@ -7,10 +7,7 @@ import lombok.extern.java.Log;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
@@ -231,6 +228,11 @@ public class AlquilaFacil {
         return alquilersEntreFechas.stream().mapToDouble(Alquiler::getValorTotal).sum();
     }
 
+    public String conocerMarcaMasVendida(){
+        Map<String, Long> agruparRepeticionesDeMarcas = alquileres.stream().collect(Collectors.groupingBy(Alquiler::getPlacaVehiculo, Collectors.counting()));
+        return agruparRepeticionesDeMarcas.entrySet().stream().max(Map.Entry.comparingByKey()).map(Map.Entry::getKey).orElse(null);
+    }
+
     public void crearAlertaError(String tituloError, String contenidoError){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(tituloError);
@@ -238,9 +240,10 @@ public class AlquilaFacil {
         alert.show();
     }
 
-    public void crearAlertaInfo(String tituloError, String contenidoError){
+    public void crearAlertaInfo(String tituloError, String encabezadoError, String contenidoError){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(tituloError);
+        alert.setHeaderText(encabezadoError);
         alert.setContentText(contenidoError);
         alert.show();
     }

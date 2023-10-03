@@ -86,7 +86,7 @@ public class RegistroVehiculoController {
             if (nuevoTexto.matches("[0-9]*")) {
                 return change;
             }
-            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
+            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
             return null;
         });
 
@@ -108,7 +108,7 @@ public class RegistroVehiculoController {
         scene.setFill(Color.TRANSPARENT);
         stage.show();
 
-        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoRegistroVehiculo"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoRegistroVehiculo") + "'" + txtFldPlaca.getText() + "'");
+        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoRegistroVehiculo"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoRegistroVehiculo") + "'" + txtFldPlaca.getText() + "'");
 
         Stage stage1 = (Stage) this.btnRegistrarVehiculo.getScene().getWindow();
         stage1.close();

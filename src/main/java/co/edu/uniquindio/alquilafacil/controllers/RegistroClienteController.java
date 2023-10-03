@@ -80,7 +80,7 @@ public class RegistroClienteController {
         scene.setFill(Color.TRANSPARENT);
         stage.show();
 
-        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoRegistroCliente"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoRegistroCliente") + "'" + txtFldCedula.getText() + "'");
+        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoRegistroCliente"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoRegistroCliente") + "'" + txtFldCedula.getText() + "'");
 
         Stage stage1 = (Stage) this.btnRegistrarCliente.getScene().getWindow();
         stage1.close();

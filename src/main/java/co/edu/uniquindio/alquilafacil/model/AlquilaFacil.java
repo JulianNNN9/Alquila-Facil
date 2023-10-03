@@ -188,7 +188,7 @@ public class AlquilaFacil {
         }
 
         if (validarFechasAlquiler(fechaAlquier, fechaRegreso, placaVehiculo)) {
-            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorFechas"), this.getResourceBundle().getString("textoContenidoAlertaErrorFechas"));
+            crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
             log.info("Las fechas fueron incorrectamente colocadas, la fecha de alquiler no puede ser después de la fecha de regreso.");
             throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
         }
@@ -256,7 +256,7 @@ public class AlquilaFacil {
                 .collect(Collectors.groupingBy(Vehiculo::getMarca, Collectors.counting()));
         Optional<Map.Entry<String, Long>> marcaMasVendida = agruparPorMarca.entrySet().stream()
                 .max(Map.Entry.comparingByValue());
-        return marcaMasVendida.map(Map.Entry::getKey).orElse(null);
+        return marcaMasVendida.map(Map.Entry::getKey).orElse(this.getResourceBundle().getString("textoValidacionEnFechasError"));
     }
 
     public boolean validarFechasAlquiler(LocalDate fechaAlquiler, LocalDate fechaRegreso, String placaVehiculo) {

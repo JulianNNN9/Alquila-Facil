@@ -2,6 +2,8 @@ package co.edu.uniquindio.alquilafacil.controllers;
 
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
 import co.edu.uniquindio.alquilafacil.model.Cliente;
+import co.edu.uniquindio.alquilafacil.model.Vehiculo;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -51,6 +53,9 @@ public class VentanaClientesController {
         colEmail.setText(alquilaFacil.getResourceBundle().getString("textoLabelColEmail"));
         colCiudad.setText(alquilaFacil.getResourceBundle().getString("textoLabelColCiudad"));
         colDireccion.setText(alquilaFacil.getResourceBundle().getString("textoLabelColDireccion"));
+
+        ObservableList<Cliente> observableList = tablaClientes.getItems();
+        observableList.addAll(alquilaFacil.getClientes());
 
         this.colCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         this.colNombre.setCellValueFactory(new PropertyValueFactory<>("nombreCompleto"));

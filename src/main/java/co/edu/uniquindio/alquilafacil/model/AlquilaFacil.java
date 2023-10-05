@@ -45,8 +45,9 @@ public class AlquilaFacil {
         }
 
         this.vehiculos = new ArrayList<>();
+        //leerVehiculos("src/main/resources/persistencia/vehiculos.txt");
         this.clientes = new ArrayList<>();
-        //leerClientes();
+        //leerClientes("src/main/resources/persistencia/clientes.txt");
         this.alquileres = new ArrayList<>();
     }
 
@@ -75,6 +76,10 @@ public class AlquilaFacil {
             throw new InformacionRepetidaException(this.getResourceBundle().getString("textoInformacionRepetidaException"));
         }
 
+        String ruta = "src/main/resources/persistencia/clientes.txt";
+        String formato = cedula+";"+nombreCompleto+";"+nroTelefono+";"+email+";"+ciudad+";"+direccionResidencia;
+        //escribirEnArchivo(ruta, formato);
+
         Cliente cliente = Cliente.builder()
                 .cedula(cedula)
                 .nombreCompleto(nombreCompleto)
@@ -85,28 +90,6 @@ public class AlquilaFacil {
                 .build();
 
         clientes.add(cliente);
-
-        /*
-        Ejemplo persitencia 1
-
-        try (Formatter formatter = new Formatter("src/main/resources/persistencia/clientes.txt")){
-            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia());
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
-        */
-
-        /*
-        Ejemplo persistencia 2
-         */
-        try {
-            FileWriter fileWriter = new FileWriter(new File("src/main/resources/persistencia/clientes.txt"), true);
-            Formatter formatter = new Formatter(fileWriter);
-            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia()+"%n");
-            fileWriter.close();
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
 
         log.info("Se ha registrado un cliente con la cedula " + cedula);
 
@@ -135,6 +118,10 @@ public class AlquilaFacil {
             throw new NumeroNegativoException(this.getResourceBundle().getString("textoNumeroNegativoException"));
         }
 
+        String ruta = "src/main/resources/persistencia/vehiculos.txt";
+        String formato = placa+";"+referencia+";"+marca+";"+modelo+";"+kilometraje+";"+precioAlquilerPorDia+";"+automatico+";"+numeroSillas+";"+imagePath+";";
+        //escribirEnArchivo(ruta, formato);
+
         Vehiculo vehiculo = Vehiculo.builder()
                 .placa(placa)
                 .referencia(referencia)
@@ -153,7 +140,7 @@ public class AlquilaFacil {
 
     }
 
-    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDate fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException, AtributoVacioException, AlquilerInvalidoException {
+    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDate fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException, AtributoVacioException {
 
         if (cedulaCliente == null || cedulaCliente.isBlank()|| fechaAlquier == null || fechaRegreso == null){
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
@@ -280,26 +267,61 @@ public class AlquilaFacil {
         return textFormatter;
     }
 
-    /*
-    public void leerClientes() {
+/*
+    public void escribirEnArchivo(String ruta, String formato){
+        try {
+            FileWriter fileWriter = new FileWriter(ruta, true);
+            Formatter formatter = new Formatter(fileWriter);
+            formatter.format(formato+"%n");
+            fileWriter.close();
+        } catch (IOException e){
+            log.severe(e.getMessage());
+        }
+    }
 
-        try (Scanner scanner = new Scanner(new File("rc/main/resources/persistencia/clientes.txt"))){
+    public void leerClientes(String ruta) {
+        try (Scanner scanner = new Scanner(new File(ruta))){
             while (scanner.hasNextLine()){
                 String linea = scanner.nextLine();
                 String [] atributos = linea.split(";");
-                this.clientes.add(Cliente.builder()
-                                .cedula(atributos[0])
-                                .nombreCompleto(atributos[1])
-                                .email(atributos[2])
-                                .nroTelefono(atributos[3])
-                                .ciudad(atributos[4])
-                                .direccionResidencia(atributos[5])
-                                .build());
+                if (!alquilaFacil.getClientes().isEmpty()){
+                    alquilaFacil.getClientes().add(Cliente.builder()
+                            .cedula(atributos[0])
+                            .nombreCompleto(atributos[1])
+                            .email(atributos[2])
+                            .nroTelefono(atributos[3])
+                            .ciudad(atributos[4])
+                            .direccionResidencia(atributos[5])
+                            .build());
+                }
             }
         } catch (IOException e){
             log.severe(e.getMessage());
         }
+    }
 
+    public void leerVehiculos(String ruta) {
+        try (Scanner scanner = new Scanner(new File(ruta))){
+            while (scanner.hasNextLine()){
+                String linea = scanner.nextLine();
+                String [] atributos = linea.split(";");
+                if (!alquilaFacil.getVehiculos().isEmpty()) {
+                    alquilaFacil.getVehiculos().add(Vehiculo.builder()
+                            .placa(atributos[0])
+                            .referencia(atributos[1])
+                            .marca(atributos[2])
+                            .modelo(atributos[3])
+                            .kilometraje(atributos[4])
+                            .precioAlquilerPorDia(Double.valueOf(atributos[5]))
+                            .automatico(atributos[6])
+                            .numeroAsientos(atributos[7])
+                            .imagenPath(atributos[8])
+                            .build());
+                }
+            }
+        } catch (IOException e){
+            log.severe(e.getMessage());
+        }
     }
     */
 }

@@ -49,7 +49,8 @@ public class AlquilaFacil implements Serializable {
         this.clientes = new ArrayList<>();
         archivoUtils.leerClientes("src/main/resources/persistencia/clientes.txt", clientes);
         this.alquileres = new ArrayList<>();
-        archivoUtils.leerAlquileres("src/main/resources/persistencia/alquileres.txt", alquileres);
+        //archivoUtils.leerAlquileres("src/main/resources/persistencia/alquileres.txt", alquileres);
+        archivoUtils.deserializarObjeto("src/main/resources/persistencia/alquileres.txt");
 
     }
 
@@ -179,7 +180,8 @@ public class AlquilaFacil implements Serializable {
 
             alquileres.add(alquiler);
 
-            archivoUtils.escribirEnArchivo("src/main/resources/persistencia/alquileres.txt", cedulaCliente+";"+placaVehiculo+";"+fechaAlquier+";"+fechaRegreso+";"+fechaAlquier+";"+valorTotal);
+            //archivoUtils.escribirEnArchivo("src/main/resources/persistencia/alquileres.txt", cedulaCliente+";"+placaVehiculo+";"+fechaAlquier+";"+fechaRegreso+";"+fechaAlquier+";"+valorTotal);
+            archivoUtils.serializarObjeto("src/main/resources/persistencia/alquileres.txt", alquiler);
 
             log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo + " a el cliente con la cedula " + cedulaCliente);
 

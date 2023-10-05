@@ -87,34 +87,28 @@ public class archivoUtils {
         }
     }
 
-    public static void serializarObjeto(String ruta, Object objeto, boolean concat) {
+    public static void serializarObjeto(String ruta, Object objeto) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(ruta);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
-        try {
+            objectOutputStream.writeObject(objeto);
 
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(ruta, concat));
-            os.writeObject(objeto);
-            os.close();
-
-        } catch (Exception ex) {
-
-            System.out.println("Error "+ex.getMessage());
-
+        } catch (IOException e) {
+            log.severe(e.getMessage());
         }
     }
 
-    public static Object deserializarObjeto(String ruta) {
+    public static List<Alquiler> deserializarObjeto(String ruta) {
+        try (FileInputStream fileInputStream = new FileInputStream(ruta);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
 
-        try {
-
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
-            Object objeto = is.readObject();
-            is.close();
-            return objeto;
+            return (List<Alquiler>) objectInputStream.readObject();
 
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            log.severe(e.getMessage());
         }
 
+        return null;
     }
 
     /**

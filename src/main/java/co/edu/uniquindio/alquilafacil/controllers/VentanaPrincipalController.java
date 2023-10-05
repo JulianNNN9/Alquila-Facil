@@ -35,9 +35,6 @@ public class VentanaPrincipalController {
     @FXML
     public Button btnMarcaMasVendida;
 
-    public VentanaPrincipalController() {
-    }
-
     public void initialize(){
 
         lblTituloVentanaPrincipal.setText(alquilaFacil.getResourceBundle().getString("textoTitulo"));

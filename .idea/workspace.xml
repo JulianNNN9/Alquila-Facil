@@ -15,9 +15,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaClientesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaClientesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/controllers/VentanaPrincipalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/AlquilaFacil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/alquilafacil/registroVehiculo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Alquiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/model/Alquiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/utils/archivoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/alquilafacil/utils/archivoUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/alquileres.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/alquileres.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/vehiculos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/vehiculos.txt" afterDir="false" />
@@ -159,7 +158,8 @@
       <workItem from="1696454236459" duration="5232000" />
       <workItem from="1696473030740" duration="182000" />
       <workItem from="1696478498760" duration="3253000" />
-      <workItem from="1696509865075" duration="6631000" />
+      <workItem from="1696509865075" duration="6843000" />
+      <workItem from="1696542527899" duration="4332000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />
@@ -278,6 +278,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.IllegalStateException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.EOFException" package="java.io" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

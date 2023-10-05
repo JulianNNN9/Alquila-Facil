@@ -2,8 +2,12 @@ package co.edu.uniquindio.alquilafacil.model;
 
 import co.edu.uniquindio.alquilafacil.exceptions.*;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextFormatter;
+import javafx.util.converter.IntegerStringConverter;
 import lombok.Getter;
 import lombok.extern.java.Log;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -41,48 +45,8 @@ public class AlquilaFacil {
         }
 
         this.vehiculos = new ArrayList<>();
-        vehiculos.add(Vehiculo.builder()
-                .placa("HGY-45D")
-                .referencia("4")
-                .marca("Renault")
-                .modelo("2020")
-                .kilometraje("1210")
-                .precioAlquilerPorDia(100.0)
-                .automatico("SI")
-                .numeroAsientos("4")
-                .imagenPath("https://acnews.blob.core.windows.net/imgnews/small/NAZ_f55645efc0bd45c58f55fd926dc53e79.jpg")
-                .build());
-        vehiculos.add(Vehiculo.builder()
-                .placa("GYI-498")
-                .referencia("Supra mk-4")
-                .marca("Toyota")
-                .modelo("1996")
-                .kilometraje("12560")
-                .precioAlquilerPorDia(350.0)
-                .automatico("NO")
-                .numeroAsientos("4")
-                .imagenPath("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO8FoVKACLVSfsQ0KG0L5b4l1XMqnZ51AQ8Q&usqp=CAU")
-                .build());
-        vehiculos.add(Vehiculo.builder()
-                .placa("SRE-48S")
-                .referencia("Yaris")
-                .marca("Toyota")
-                .modelo("2023")
-                .kilometraje("12")
-                .precioAlquilerPorDia(500.0)
-                .automatico("NO")
-                .numeroAsientos("4")
-                .imagenPath("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXccxb8SibFKVOmpKUOG9qeY72lio8VIdiig&usqp=CAU")
-                .build());
         this.clientes = new ArrayList<>();
-        clientes.add(Cliente.builder()
-                .cedula("1234")
-                .nombreCompleto("Ricardo Marin")
-                .nroTelefono("123")
-                .email("ricard@empresa.com")
-                .ciudad("Armenia")
-                .direccionResidencia("Salento")
-                .build());
+        leerClientes();
         this.alquileres = new ArrayList<>();
     }
 
@@ -121,6 +85,28 @@ public class AlquilaFacil {
                 .build();
 
         clientes.add(cliente);
+
+        /*
+        Ejemplo persitencia 1
+
+        try (Formatter formatter = new Formatter("src/main/resources/persistencia/clientes.txt")){
+            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia());
+        } catch (IOException e){
+            log.severe(e.getMessage());
+        }
+        */
+
+        /*
+        Ejemplo persistencia 2
+         */
+        try {
+            FileWriter fileWriter = new FileWriter(new File("src/main/resources/persistencia/clientes.txt"), true);
+            Formatter formatter = new Formatter(fileWriter);
+            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia()+"%n");
+            fileWriter.close();
+        } catch (IOException e){
+            log.severe(e.getMessage());
+        }
 
         log.info("Se ha registrado un cliente con la cedula " + cedula);
 
@@ -280,5 +266,38 @@ public class AlquilaFacil {
         alert.setHeaderText(encabezadoError);
         alert.setContentText(contenidoError);
         alert.show();
+    }
+
+    public TextFormatter<Integer> stringFormatterParaNumeros(){
+        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, change -> {
+            String nuevoTexto = change.getControlNewText();
+            if (nuevoTexto.matches("[0-9]*")) {
+                return change;
+            }
+            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
+            return null;
+        });
+        return textFormatter;
+    }
+
+    public void leerClientes() {
+
+        try (Scanner scanner = new Scanner(new File("rc/main/resources/persistencia/clientes.txt"))){
+            while (scanner.hasNextLine()){
+                String linea = scanner.nextLine();
+                String [] atributos = linea.split(";");
+                this.clientes.add(Cliente.builder()
+                                .cedula(atributos[0])
+                                .nombreCompleto(atributos[1])
+                                .email(atributos[2])
+                                .nroTelefono(atributos[3])
+                                .ciudad(atributos[4])
+                                .direccionResidencia(atributos[5])
+                                .build());
+            }
+        } catch (IOException e){
+            log.severe(e.getMessage());
+        }
+
     }
 }

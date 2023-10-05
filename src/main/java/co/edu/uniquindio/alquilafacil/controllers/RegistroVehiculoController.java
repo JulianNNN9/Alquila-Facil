@@ -4,7 +4,6 @@ import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
 import co.edu.uniquindio.alquilafacil.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.alquilafacil.exceptions.NumeroNegativoException;
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,11 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.converter.IntegerStringConverter;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -81,16 +79,7 @@ public class RegistroVehiculoController {
         lblRutaImagen.setText(alquilaFacil.getResourceBundle().getString("textoLabelRutaImagen"));
         btnRegistrarVehiculo.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarVehiculo"));
 
-        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, change -> {
-            String nuevoTexto = change.getControlNewText();
-            if (nuevoTexto.matches("[0-9]*")) {
-                return change;
-            }
-            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
-            return null;
-        });
-
-        txtFldPrecioAlquierPorDia.setTextFormatter(textFormatter);
+        txtFldPrecioAlquierPorDia.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
 
     }
 

@@ -3,7 +3,6 @@ package co.edu.uniquindio.alquilafacil.controllers;
 import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
 import co.edu.uniquindio.alquilafacil.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -63,6 +62,9 @@ public class RegistroClienteController {
         lblCiudad.setText(alquilaFacil.getResourceBundle().getString("textoLabelCiudad"));
         lblResidencia.setText(alquilaFacil.getResourceBundle().getString("textoLabelDireccionResidencia"));
         btnRegistrarCliente.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarCliente"));
+
+        txtFldCedula.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
+        txtFldNumeroTelefono.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
 
     }
 

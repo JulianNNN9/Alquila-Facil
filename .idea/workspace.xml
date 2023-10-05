@@ -15,6 +15,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/textos_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textos_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/textos_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textos_es.properties" afterDir="false" />
     </list>
+    <list default="true" id="759079e2-dde8-4960-8df8-61bb801c7145" name="Changes" comment="" />
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +71,9 @@
     "git-widget-placeholder": "rmx",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/Programacion/Alquila-Facil",
+    "git-widget-placeholder": "Julian",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "G:/IntelliJ IDEA - workspace/Alquila-Facil",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -76,6 +81,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.46206897",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
@@ -153,6 +159,12 @@
       <workItem from="1696352711929" duration="4532000" />
       <workItem from="1696357473394" duration="219000" />
       <workItem from="1696468958535" duration="6945000" />
+      <workItem from="1696352711929" duration="4698000" />
+      <workItem from="1696429319133" duration="1416000" />
+      <workItem from="1696431256617" duration="453000" />
+      <workItem from="1696431727054" duration="19000" />
+      <workItem from="1696454236459" duration="5232000" />
+      <workItem from="1696473030740" duration="182000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />
@@ -226,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696351731425</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Se agregan los archivos de persistencia.">
+      <option name="closed" value="true" />
+      <created>1696473096522</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696473096522</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +274,8 @@
     <MESSAGE value="Se crea la nueva ventana de calcular las ganancias (con todo)." />
     <MESSAGE value="Se crea la nueva funcionalidad de conocer la marca que más se vende mediante una alerta de informacion." />
     <MESSAGE value="Se ha arreglado el error en la validacion de las fechas para hacer una alquiler." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se ha arreglado el error en la validacion de las fechas para hacer una alquiler." />
+    <MESSAGE value="Se agregan los archivos de persistencia." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agregan los archivos de persistencia." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

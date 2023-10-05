@@ -16,7 +16,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/textos_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textos_es.properties" afterDir="false" />
     </list>
     <list default="true" id="759079e2-dde8-4960-8df8-61bb801c7145" name="Changes" comment="" />
-
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +86,7 @@
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\IntelliJ IDEA - workspace\AlquilaFacil\src\main\resources\co\edu\uniquindio\alquilafacil" />
@@ -165,6 +164,7 @@
       <workItem from="1696431727054" duration="19000" />
       <workItem from="1696454236459" duration="5232000" />
       <workItem from="1696473030740" duration="182000" />
+      <workItem from="1696473863219" duration="2391000" />
     </task>
     <task id="LOCAL-00001" summary="Se han completo todas las funciones de botones, las validaciones están completas, los log funcionando. Todo correcto :)">
       <option name="closed" value="true" />

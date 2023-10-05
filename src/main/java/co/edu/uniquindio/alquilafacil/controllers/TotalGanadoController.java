@@ -19,7 +19,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class TotalGanadoController {
+
     private final AlquilaFacil alquilaFacil = AlquilaFacil.getInstance();
+
     @FXML
     public Button btnCerrarVentana;
     @FXML
@@ -38,6 +40,9 @@ public class TotalGanadoController {
     public Button btnCalcular;
     @FXML
     public Label lblCalcularTotalGanado;
+
+    public TotalGanadoController() {
+    }
 
     public void initialize(){
 

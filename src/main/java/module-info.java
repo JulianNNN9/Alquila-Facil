@@ -5,6 +5,7 @@ module co.edu.uniquindio.alquilafacil {
     requires java.logging;
     requires javafx.graphics;
     requires static lombok;
+    requires java.desktop;
 
 
     opens co.edu.uniquindio.alquilafacil to javafx.fxml;

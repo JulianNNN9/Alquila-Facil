@@ -17,9 +17,10 @@
         </columns>
       </TableView>
        <Button fx:id="btnCerrarVentana" layoutX="567.0" mnemonicParsing="false" onAction="#onCerrarVentanaClick" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-font-size: 20px; -fx-alignment: top-left; -fx-font-style: oblique;" text="X" />
-      <Label fx:id="lblTituloClientesVentana" layoutX="210.0" layoutY="14.0" prefHeight="17.0" prefWidth="181.0">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
+      <Label fx:id="lblTituloClientesVentana" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="13.0" prefHeight="17.0" prefWidth="181.0" textAlignment="CENTER">
+          <font>
+              <Font name="Candara Bold" size="16.0" />
+          </font>
+      </Label>
    </children>
 </AnchorPane>

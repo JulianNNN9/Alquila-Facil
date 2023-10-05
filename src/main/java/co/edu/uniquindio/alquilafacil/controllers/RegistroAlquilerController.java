@@ -129,7 +129,7 @@ public class RegistroAlquilerController {
 
         alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), LocalDate.now(), Double.parseDouble(txtFldValorTotal.getText()));
 
-        File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/ventanaPrincipal.fxml");
+       File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml");
         FXMLLoader loader = new FXMLLoader(url.toURL());
         Parent parent = loader.load();
         Scene scene = new Scene(parent);

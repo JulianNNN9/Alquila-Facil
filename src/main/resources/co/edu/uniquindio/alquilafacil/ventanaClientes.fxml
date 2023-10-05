@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 5; -fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 90, 205));" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.alquilafacil.controllers.VentanaClientesController">
+   <children>
+      <TableView fx:id="tablaClientes" layoutX="33.0" layoutY="53.0" prefHeight="325.0" prefWidth="534.0" style="-fx-background-radius: 5; -fx-background-color: linear-gradient(to top right, rgb(168, 227, 222), rgb(106, 70, 205));">
+        <columns>
+          <TableColumn fx:id="colCedula" prefWidth="85.0" />
+          <TableColumn fx:id="colNombre" prefWidth="78.0" />
+            <TableColumn fx:id="colTelefono" prefWidth="90.0" />
+            <TableColumn fx:id="colEmail" prefWidth="83.0" />
+            <TableColumn fx:id="colCiudad" prefWidth="82.0" />
+            <TableColumn fx:id="colDireccion" prefWidth="115.0" />
+        </columns>
+      </TableView>
+       <Button fx:id="btnCerrarVentana" layoutX="567.0" mnemonicParsing="false" onAction="#onCerrarVentanaClick" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-effect: inherit; -fx-font-size: 20px; -fx-alignment: top-left; -fx-font-style: oblique;" text="X" />
+      <Label fx:id="lblTituloClientesVentana" layoutX="210.0" layoutY="14.0" prefHeight="17.0" prefWidth="181.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

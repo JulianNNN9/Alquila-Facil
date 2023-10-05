@@ -16,5 +16,4 @@ module co.edu.uniquindio.alquilafacil {
     exports co.edu.uniquindio.alquilafacil.controllers;
     exports co.edu.uniquindio.alquilafacil.exceptions;
     exports co.edu.uniquindio.alquilafacil.model;
-    exports co.edu.uniquindio.alquilafacil.javaUtils;
 }

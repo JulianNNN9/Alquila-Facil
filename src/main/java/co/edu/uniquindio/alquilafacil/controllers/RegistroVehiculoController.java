@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -65,6 +66,9 @@ public class RegistroVehiculoController {
     @FXML
     public Label lblRegistrarClientes;
 
+    public RegistroVehiculoController() {
+    }
+
     public void initialize(){
 
         lblRegistrarClientes.setText(alquilaFacil.getResourceBundle().getString("textoLabelRegistrarVehiculos"));
@@ -79,7 +83,9 @@ public class RegistroVehiculoController {
         lblRutaImagen.setText(alquilaFacil.getResourceBundle().getString("textoLabelRutaImagen"));
         btnRegistrarVehiculo.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarVehiculo"));
 
+        txtFldKilometraje.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
         txtFldPrecioAlquierPorDia.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
+        txtFldNumeroAsientos.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
 
     }
 
@@ -119,4 +125,5 @@ public class RegistroVehiculoController {
         Stage stage1 = (Stage) this.btnCerrarVentana.getScene().getWindow();
         stage1.close();
     }
+
 }

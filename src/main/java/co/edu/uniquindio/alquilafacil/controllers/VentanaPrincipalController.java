@@ -1,7 +1,6 @@
 package co.edu.uniquindio.alquilafacil.controllers;
 
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +14,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class VentanaPrincipalController {
+
     private final AlquilaFacil alquilaFacil = AlquilaFacil.getInstance();
+
     @FXML
     public Button btnRegistrarCliente;
     @FXML
@@ -33,6 +34,9 @@ public class VentanaPrincipalController {
     public Label lblTituloVentanaPrincipal;
     @FXML
     public Button btnMarcaMasVendida;
+
+    public VentanaPrincipalController() {
+    }
 
     public void initialize(){
 

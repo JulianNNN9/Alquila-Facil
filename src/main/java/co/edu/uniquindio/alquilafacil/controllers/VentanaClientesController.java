@@ -44,6 +44,9 @@ public class VentanaClientesController {
     @FXML
     public Button btnCerrarVentana;
 
+    public VentanaClientesController() {
+    }
+
     public void initialize(){
 
         lblTituloClientesVentana.setText(alquilaFacil.getResourceBundle().getString("textoTablaClientesTitulo"));

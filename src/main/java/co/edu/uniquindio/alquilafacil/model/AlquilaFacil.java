@@ -6,8 +6,6 @@ import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 import lombok.Getter;
 import lombok.extern.java.Log;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -15,6 +13,9 @@ import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
+import co.edu.uniquindio.alquilafacil.javaUtils.javaUtil;
+import static co.edu.uniquindio.alquilafacil.javaUtils.javaUtil.leerClientes;
+import static co.edu.uniquindio.alquilafacil.javaUtils.javaUtil.leerVehiculos;
 
 @Getter
 @Log
@@ -45,8 +46,9 @@ public class AlquilaFacil {
         }
 
         this.vehiculos = new ArrayList<>();
+        leerVehiculos("src/main/resources/persistencia/vehiculos.txt");
         this.clientes = new ArrayList<>();
-        leerClientes();
+        leerClientes("src/main/resources/persistencia/clientes.txt");
         this.alquileres = new ArrayList<>();
     }
 
@@ -75,6 +77,10 @@ public class AlquilaFacil {
             throw new InformacionRepetidaException(this.getResourceBundle().getString("textoInformacionRepetidaException"));
         }
 
+        String ruta = "src/main/resources/persistencia/clientes.txt";
+        String formato = cedula+";"+nombreCompleto+";"+nroTelefono+";"+email+";"+ciudad+";"+direccionResidencia;
+        javaUtil.escribirEnArchivo(ruta, formato);
+
         Cliente cliente = Cliente.builder()
                 .cedula(cedula)
                 .nombreCompleto(nombreCompleto)
@@ -85,30 +91,6 @@ public class AlquilaFacil {
                 .build();
 
         clientes.add(cliente);
-
-        /*
-        Ejemplo persitencia 1
-
-        try (Formatter formatter = new Formatter("src/main/resources/persistencia/clientes.txt")){
-            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia());
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
-        */
-
-        /*
-        Ejemplo persistencia 2
-         */
-        try {
-            FileWriter fileWriter = new FileWriter(new File("src/main/resources/persistencia/clientes.txt"), true);
-            Formatter formatter = new Formatter(fileWriter);
-            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia()+"%n");
-            fileWriter.close();
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
-
-        log.info("Se ha registrado un cliente con la cedula " + cedula);
 
     }
 
@@ -134,6 +116,10 @@ public class AlquilaFacil {
             log.info("Se han ingresado valores invalidos.");
             throw new NumeroNegativoException(this.getResourceBundle().getString("textoNumeroNegativoException"));
         }
+
+        String ruta = "src/main/resources/persistencia/vehiculos.txt";
+        String formato = placa+";"+referencia+";"+marca+";"+modelo+";"+kilometraje+";"+precioAlquilerPorDia+";"+automatico+";"+numeroSillas+";"+imagePath+";";
+        javaUtil.escribirEnArchivo(ruta, formato);
 
         Vehiculo vehiculo = Vehiculo.builder()
                 .placa(placa)
@@ -280,24 +266,4 @@ public class AlquilaFacil {
         return textFormatter;
     }
 
-    public void leerClientes() {
-
-        try (Scanner scanner = new Scanner(new File("rc/main/resources/persistencia/clientes.txt"))){
-            while (scanner.hasNextLine()){
-                String linea = scanner.nextLine();
-                String [] atributos = linea.split(";");
-                this.clientes.add(Cliente.builder()
-                                .cedula(atributos[0])
-                                .nombreCompleto(atributos[1])
-                                .email(atributos[2])
-                                .nroTelefono(atributos[3])
-                                .ciudad(atributos[4])
-                                .direccionResidencia(atributos[5])
-                                .build());
-            }
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
-
-    }
 }

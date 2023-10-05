@@ -1,3 +1,5 @@
 HUI-984;Spark gt;Chevrolet;2020;1520;120.0;NO;4;https://http2.mlstatic.com/D_NQ_NP_734301-MCO69712342895_052023-O.jpg
 GTE-984;Supra mk-4;Toyota;1996;78423;550.0;NO;4;https://p.turbosquid.com/ts-thumb/lT/1F9H68/gpW15tGZ/toyotasupra/png/1595557301/600x600/fit_q87/7203417e37bf813777ad49487293dbf7b9422371/toyotasupra.jpg
 FER-48A;4 Runner;Toyota;2023;1200;680.0;NO;6;https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_fb5df7a147924716a6c6c3e045e18443.jpg
+FTR-489;Duster;Renaut;2020;4562;500.0;SI;4;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_527jZT8Vmixoc72NYKu-2YnoVfmbH2vWKA&usqp=CAU
+SEX-069;Urus;Lamborghini;2022;1785;3600.0;Híbrido;2;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThTRdV2Hca-DQibzmDu8XnV1rMhbj-lPXFSA&usqp=CAU

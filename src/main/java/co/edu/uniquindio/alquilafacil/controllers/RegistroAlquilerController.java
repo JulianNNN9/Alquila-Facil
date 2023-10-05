@@ -1,6 +1,5 @@
 package co.edu.uniquindio.alquilafacil.controllers;
 
-import co.edu.uniquindio.alquilafacil.exceptions.AlquilerInvalidoException;
 import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
 import co.edu.uniquindio.alquilafacil.exceptions.ErrorEnIngresoFechasException;
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
@@ -18,16 +17,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.converter.IntegerStringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-
 import static java.util.concurrent.TimeUnit.DAYS;
 
 public class RegistroAlquilerController {
-
-   
 
     private final AlquilaFacil alquilaFacil = AlquilaFacil.getInstance();
 
@@ -72,9 +67,6 @@ public class RegistroAlquilerController {
 
     @FXML
     private ImageView imageView;
-
-    public RegistroAlquilerController() {
-    }
 
     public void initialize(){
 

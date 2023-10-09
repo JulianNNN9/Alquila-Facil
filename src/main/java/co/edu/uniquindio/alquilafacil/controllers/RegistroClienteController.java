@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -104,4 +103,5 @@ public class RegistroClienteController {
         Stage stage1 = (Stage) this.btnCerrarVentana.getScene().getWindow();
         stage1.close();
     }
+
 }

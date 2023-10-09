@@ -1,6 +1,5 @@
 package co.edu.uniquindio.alquilafacil.controllers;
 
-import co.edu.uniquindio.alquilafacil.exceptions.AlquilerInvalidoException;
 import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
 import co.edu.uniquindio.alquilafacil.exceptions.ErrorEnIngresoFechasException;
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
@@ -18,14 +17,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.converter.IntegerStringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import static java.util.concurrent.TimeUnit.DAYS;
 
 public class RegistroAlquilerController {
-
-   
 
     private final AlquilaFacil alquilaFacil = AlquilaFacil.getInstance();
 
@@ -35,8 +32,6 @@ public class RegistroAlquilerController {
     public DatePicker txtFldFechaAlquier;
     @FXML
     public DatePicker txtFldFechaRegreso;
-    @FXML
-    public TextField txtFldValorTotal;
     @FXML
     public Button btnCerrarVentana;
     @FXML
@@ -66,8 +61,6 @@ public class RegistroAlquilerController {
     @FXML
     public Label lblFechaRegreso;
     @FXML
-    public Label lblValorTotal;
-    @FXML
     public Label lblRegistrarAlquileres;
     @FXML
     public Label lblSeleccionVehiculo;
@@ -81,7 +74,6 @@ public class RegistroAlquilerController {
         lblCedulaCliente.setText(alquilaFacil.getResourceBundle().getString("textoLabelCedulaCliente"));
         lblFechaAlquiler.setText(alquilaFacil.getResourceBundle().getString("textoLabelFechaAlquiler"));
         lblFechaRegreso.setText(alquilaFacil.getResourceBundle().getString("textoLabelFechaRegreso"));
-        lblValorTotal.setText(alquilaFacil.getResourceBundle().getString("textoLabelValorTotal"));
         lblSeleccionVehiculo.setText(alquilaFacil.getResourceBundle().getString("textoLabelSeleccioneVehiculoAlquilar"));
         btnRegistrarAlquier.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarAlquilar"));
 
@@ -112,22 +104,13 @@ public class RegistroAlquilerController {
             imageView.setImage(image);
         }));
 
-        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, change -> {
-            String nuevoTexto = change.getControlNewText();
-            if (nuevoTexto.matches("[0-9]*")) {
-                return change;
-            }
-            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"), alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
-            return null;
-        });
-
-        txtFldValorTotal.setTextFormatter(textFormatter);
-
     }
 
-    public void onRegistrarAlquilerClick() throws ErrorEnIngresoFechasException, AtributoVacioException, IOException, AlquilerInvalidoException {
+    public void onRegistrarAlquilerClick() throws ErrorEnIngresoFechasException, AtributoVacioException, IOException {
 
-        alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), LocalDate.now(), Double.parseDouble(txtFldValorTotal.getText()));
+        long diasDeDiferencia = DAYS.toChronoUnit().between(txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue());
+
+        alquilaFacil.registrarAlquiler(txtFldCedulaCliente.getText(), colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colPlaca.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1), txtFldFechaAlquier.getValue(), txtFldFechaRegreso.getValue(), LocalDate.now(), Double.parseDouble(colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1)) * diasDeDiferencia);
 
        File url = new File("src/main/resources/co/edu/uniquindio/alquilafacil/registroAlquiler.fxml");
         FXMLLoader loader = new FXMLLoader(url.toURL());
@@ -147,7 +130,7 @@ public class RegistroAlquilerController {
                 alquilaFacil.getResourceBundle().getString("textoFacturaFechaRegreso") + " " + txtFldFechaAlquier.getValue() + "\n" +
                 alquilaFacil.getResourceBundle().getString("textoFacturaFechaRegistro") + " " + txtFldFechaRegreso.getValue() + "\n" + alquilaFacil.getResourceBundle().getString("textoFacturaCedulaCliente") + LocalDate.now() + "\n" +
                 "\n" +
-                alquilaFacil.getResourceBundle().getString("textoFacturaValorTotal") + " " + txtFldValorTotal.getText());
+                alquilaFacil.getResourceBundle().getString("textoFacturaValorTotal") + " " + Double.parseDouble(colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().substring(23, colAlquilerXDia.getCellObservableValue(tablaVehiculos.getSelectionModel().getFocusedIndex()).toString().length() - 1)) * diasDeDiferencia);
         alert.show();
 
         Stage stage1 = (Stage) this.btnRegistrarAlquier.getScene().getWindow();

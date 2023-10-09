@@ -79,7 +79,9 @@ public class RegistroVehiculoController {
         lblRutaImagen.setText(alquilaFacil.getResourceBundle().getString("textoLabelRutaImagen"));
         btnRegistrarVehiculo.setText(alquilaFacil.getResourceBundle().getString("textoBotonRegistrarVehiculo"));
 
+        txtFldKilometraje.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
         txtFldPrecioAlquierPorDia.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
+        txtFldNumeroAsientos.setTextFormatter(alquilaFacil.stringFormatterParaNumeros());
 
     }
 
@@ -119,4 +121,5 @@ public class RegistroVehiculoController {
         Stage stage1 = (Stage) this.btnCerrarVentana.getScene().getWindow();
         stage1.close();
     }
+
 }

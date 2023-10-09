@@ -3,7 +3,6 @@ package co.edu.uniquindio.alquilafacil.controllers;
 import co.edu.uniquindio.alquilafacil.exceptions.AtributoVacioException;
 import co.edu.uniquindio.alquilafacil.exceptions.ErrorEnIngresoFechasException;
 import co.edu.uniquindio.alquilafacil.model.AlquilaFacil;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,12 +13,13 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
 import java.io.IOException;
 
 public class TotalGanadoController {
+
     private final AlquilaFacil alquilaFacil = AlquilaFacil.getInstance();
+
     @FXML
     public Button btnCerrarVentana;
     @FXML

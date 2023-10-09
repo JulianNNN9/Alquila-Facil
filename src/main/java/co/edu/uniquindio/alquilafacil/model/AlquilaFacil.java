@@ -6,20 +6,23 @@ import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 import lombok.Getter;
 import lombok.extern.java.Log;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
+import co.edu.uniquindio.alquilafacil.utils.*;
 
 @Getter
 @Log
 
-public class AlquilaFacil {
+public class AlquilaFacil implements Serializable {
 
     List<Cliente> clientes;
     List<Vehiculo> vehiculos;
@@ -30,7 +33,7 @@ public class AlquilaFacil {
 
     private static AlquilaFacil alquilaFacil;
 
-    private AlquilaFacil(){
+    private AlquilaFacil() {
 
         this.resourceBundle = ResourceBundle.getBundle("textos");
 
@@ -45,12 +48,15 @@ public class AlquilaFacil {
         }
 
         this.vehiculos = new ArrayList<>();
+        archivoUtils.leerVehiculos("src/main/resources/persistencia/vehiculos.txt", vehiculos);
         this.clientes = new ArrayList<>();
-        //leerClientes();
-        this.alquileres = new ArrayList<>();
+        archivoUtils.leerClientes("src/main/resources/persistencia/clientes.txt", clientes);
+        this.alquileres = (List<Alquiler>) archivoUtils.deserializarObjeto("src/main/resources/persistencia/alquileres.txt");;
+
+
     }
 
-    public static AlquilaFacil getInstance(){
+    public static AlquilaFacil getInstance() {
 
         if (alquilaFacil == null){
             alquilaFacil = new AlquilaFacil();
@@ -61,7 +67,7 @@ public class AlquilaFacil {
         return alquilaFacil;
     }
 
-    public void registrarCliente(String cedula, String nombreCompleto, String nroTelefono, String email, String ciudad, String direccionResidencia) throws AtributoVacioException, InformacionRepetidaException {
+    public void registrarCliente(String cedula, String nombreCompleto, String nroTelefono, String email, String ciudad, String direccionResidencia) throws AtributoVacioException, InformacionRepetidaException, IOException {
 
         if (cedula == null || cedula.isBlank() || nombreCompleto == null || nombreCompleto.isBlank() || nroTelefono == null || nroTelefono.isBlank()){
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
@@ -75,6 +81,8 @@ public class AlquilaFacil {
             throw new InformacionRepetidaException(this.getResourceBundle().getString("textoInformacionRepetidaException"));
         }
 
+        archivoUtils.escribirEnArchivo("src/main/resources/persistencia/clientes.txt", cedula+";"+nombreCompleto+";"+nroTelefono+";"+email+";"+ciudad+";"+direccionResidencia);
+
         Cliente cliente = Cliente.builder()
                 .cedula(cedula)
                 .nombreCompleto(nombreCompleto)
@@ -85,15 +93,6 @@ public class AlquilaFacil {
                 .build();
 
         clientes.add(cliente);
-
-        try {
-            FileWriter fileWriter = new FileWriter(new File("src/main/resources/persistencia/clientes.txt"), true);
-            Formatter formatter = new Formatter(fileWriter);
-            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia()+"%n");
-            fileWriter.close();
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
 
         log.info("Se ha registrado un cliente con la cedula " + cedula);
 
@@ -122,6 +121,8 @@ public class AlquilaFacil {
             throw new NumeroNegativoException(this.getResourceBundle().getString("textoNumeroNegativoException"));
         }
 
+        archivoUtils.escribirEnArchivo("src/main/resources/persistencia/vehiculos.txt", placa+";"+referencia+";"+marca+";"+modelo+";"+kilometraje+";"+precioAlquilerPorDia+";"+automatico+";"+numeroSillas+";"+imagePath);
+
         Vehiculo vehiculo = Vehiculo.builder()
                 .placa(placa)
                 .referencia(referencia)
@@ -140,7 +141,7 @@ public class AlquilaFacil {
 
     }
 
-    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDate fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException, AtributoVacioException, AlquilerInvalidoException {
+    public void registrarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquier, LocalDate fechaRegreso, LocalDate fechaRegistro, double valorTotal) throws ErrorEnIngresoFechasException, AtributoVacioException, IOException {
 
         if (cedulaCliente == null || cedulaCliente.isBlank()|| fechaAlquier == null || fechaRegreso == null){
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAtributoVacio"), this.getResourceBundle().getString("textoContenidoAlertaErrorAtributoVacio"));
@@ -162,8 +163,8 @@ public class AlquilaFacil {
 
         if (validarFechasAlquiler(fechaAlquier, fechaRegreso, placaVehiculo)) {
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
-            log.info("Las fechas fueron incorrectamente colocadas, la fecha de alquiler no puede ser después de la fecha de regreso.");
-            throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
+            log.info("Las fechas ingresadas no se encuentran disponibles.");
+            throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
         }
 
         if (clientes.stream().anyMatch(cliente -> cliente.getCedula().equals(cedulaCliente))){
@@ -180,6 +181,8 @@ public class AlquilaFacil {
                     .build();
 
             alquileres.add(alquiler);
+
+            archivoUtils.serializarObjeto("src/main/resources/persistencia/alquileres.txt", alquiler);
 
             log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo + " a el cliente con la cedula " + cedulaCliente);
 
@@ -256,7 +259,7 @@ public class AlquilaFacil {
     }
 
     public TextFormatter<Integer> stringFormatterParaNumeros(){
-        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), 0, change -> {
+        return new TextFormatter<>(new IntegerStringConverter(), 0, change -> {
             String nuevoTexto = change.getControlNewText();
             if (nuevoTexto.matches("[0-9]*")) {
                 return change;
@@ -264,7 +267,6 @@ public class AlquilaFacil {
             alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoIngresoValoresNumericos"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContenidoAlertaInfoIngresoValoresNumericos"));
             return null;
         });
-        return textFormatter;
     }
 
 }

@@ -68,25 +68,6 @@ public class archivoUtils {
         }
     }
 
-    public static void leerAlquileres(String ruta, List<Alquiler> alquileres){
-        try (Scanner scanner = new Scanner(new File(ruta))){
-            while (scanner.hasNextLine()){
-                String linea = scanner.nextLine();
-                String [] atributos = linea.split(";");
-                alquileres.add(Alquiler.builder()
-                        .cedulaCliente(atributos[0])
-                        .placaVehiculo(atributos[1])
-                        .fechaAlquiler(LocalDate.parse(atributos[2]))
-                        .fechaRegreso(LocalDate.parse(atributos[3]))
-                        .fechaRegistro(LocalDate.parse(atributos[4]))
-                        .valorTotal(Double.parseDouble(atributos[5]))
-                        .build());
-            }
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
-    }
-
     public static void serializarObjeto(String ruta, Object objeto) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(ruta);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
@@ -98,11 +79,11 @@ public class archivoUtils {
         }
     }
 
-    public static List<Alquiler> deserializarObjeto(String ruta) {
+    public static Object deserializarObjeto(String ruta) {
         try (FileInputStream fileInputStream = new FileInputStream(ruta);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
 
-            return (List<Alquiler>) objectInputStream.readObject();
+            return objectInputStream.readObject();
 
         } catch (IOException | ClassNotFoundException e) {
             log.severe(e.getMessage());

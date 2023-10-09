@@ -139,7 +139,11 @@ public class VentanaPrincipalController {
     }
 
     public void onMarcaMasVendidaClick() {
-        alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoMarcaMasVendida"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContextoAlertaInfoMarcaMasVendida") + " " +alquilaFacil.conocerMarcaMasVendida() + ".");
+        try {
+            alquilaFacil.crearAlertaInfo(alquilaFacil.getResourceBundle().getString("textoTituloAlertaInfoMarcaMasVendida"), alquilaFacil.getResourceBundle().getString("textoAlertaInfoHeader"),alquilaFacil.getResourceBundle().getString("textoContextoAlertaInfoMarcaMasVendida") + " " +alquilaFacil.conocerMarcaMasVendida() + ".");
+        } catch (Exception e) {
+            alquilaFacil.crearAlertaError("Error", e.getMessage());
+        }
     }
 
     @FXML

@@ -51,7 +51,14 @@ public class AlquilaFacil implements Serializable {
         archivoUtils.leerVehiculos("src/main/resources/persistencia/vehiculos.txt", vehiculos);
         this.clientes = new ArrayList<>();
         archivoUtils.leerClientes("src/main/resources/persistencia/clientes.txt", clientes);
-        this.alquileres = (List<Alquiler>) archivoUtils.deserializarObjeto("src/main/resources/persistencia/alquileres.txt");;
+
+        ArrayList<Alquiler> aux = (ArrayList<Alquiler> ) archivoUtils.deserializarObjeto("src/main/resources/persistencia/alquileres.ser");
+
+        if(aux == null ){
+            this.alquileres = new ArrayList<>();
+        }else{
+            this.alquileres = aux;
+        }
 
 
     }
@@ -182,7 +189,7 @@ public class AlquilaFacil implements Serializable {
 
             alquileres.add(alquiler);
 
-            archivoUtils.serializarObjeto("src/main/resources/persistencia/alquileres.txt", alquiler);
+            archivoUtils.serializarObjeto("src/main/resources/persistencia/alquileres.ser", alquileres);
 
             log.info("Se ha registrado un alquier del vehiculo con la placa " + placaVehiculo + " a el cliente con la cedula " + cedulaCliente);
 
@@ -224,8 +231,10 @@ public class AlquilaFacil implements Serializable {
         return vehiculos.stream().filter(vehiculo -> placaList.contains(vehiculo.getPlaca())).collect(Collectors.toList());
     }
 
-    public String conocerMarcaMasVendida(){
-        System.out.println(alquileres);
+    public String conocerMarcaMasVendida() throws Exception{
+        if(alquileres==null){
+            throw new Exception("No existen alquielres");
+        }
         List<Vehiculo> vehiculosEnAlquiler = encontrarVehiculosEnAlquiler();
         System.out.println(vehiculosEnAlquiler);
         Map<String, Long> agruparPorMarca = vehiculosEnAlquiler.stream()

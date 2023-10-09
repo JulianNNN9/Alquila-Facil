@@ -161,8 +161,8 @@ public class AlquilaFacil implements Serializable {
 
         if (validarFechasAlquiler(fechaAlquier, fechaRegreso, placaVehiculo)) {
             crearAlertaError(this.getResourceBundle().getString("textoTituloAlertaErrorAlquilerInvalido"), this.getResourceBundle().getString("textoContenidoErrorAlquilerInvalido"));
-            log.info("Las fechas fueron incorrectamente colocadas, la fecha de alquiler no puede ser después de la fecha de regreso.");
-            throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoErrorEnIngresoFechasException"));
+            log.info("Las fechas ingresadas no se encuentran disponibles.");
+            throw new ErrorEnIngresoFechasException(this.getResourceBundle().getString("textoAlquilerInvalidoException"));
         }
 
         if (clientes.stream().anyMatch(cliente -> cliente.getCedula().equals(cedulaCliente))){

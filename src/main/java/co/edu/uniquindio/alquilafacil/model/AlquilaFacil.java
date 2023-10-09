@@ -86,19 +86,6 @@ public class AlquilaFacil {
 
         clientes.add(cliente);
 
-        /*
-        Ejemplo persitencia 1
-
-        try (Formatter formatter = new Formatter("src/main/resources/persistencia/clientes.txt")){
-            formatter.format(cliente.getCedula()+";"+cliente.getNombreCompleto()+";"+cliente.getNroTelefono()+";"+cliente.getEmail()+";"+cliente.getCiudad()+";"+cliente.getDireccionResidencia());
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
-        */
-
-        /*
-        Ejemplo persistencia 2
-         */
         try {
             FileWriter fileWriter = new FileWriter(new File("src/main/resources/persistencia/clientes.txt"), true);
             Formatter formatter = new Formatter(fileWriter);
@@ -280,26 +267,4 @@ public class AlquilaFacil {
         return textFormatter;
     }
 
-    /*
-    public void leerClientes() {
-
-        try (Scanner scanner = new Scanner(new File("rc/main/resources/persistencia/clientes.txt"))){
-            while (scanner.hasNextLine()){
-                String linea = scanner.nextLine();
-                String [] atributos = linea.split(";");
-                this.clientes.add(Cliente.builder()
-                                .cedula(atributos[0])
-                                .nombreCompleto(atributos[1])
-                                .email(atributos[2])
-                                .nroTelefono(atributos[3])
-                                .ciudad(atributos[4])
-                                .direccionResidencia(atributos[5])
-                                .build());
-            }
-        } catch (IOException e){
-            log.severe(e.getMessage());
-        }
-
-    }
-    */
 }
